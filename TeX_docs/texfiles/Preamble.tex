@@ -1,0 +1,80 @@
+% These packages were chosen solely by me based on my  preferences.
+% For most packages, excepting babel, this should not affect university 
+% requirements.
+
+% Encoding
+\usepackage[utf8]{inputenc} % enables the use of UTF-8 as character encoding
+\usepackage{microtype} % enables certain features 'towards typographical perfection'
+
+\usepackage[T1]{fontenc} % ensures the use of font encodings that support accented characters
+
+% Fonts
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+% Graphics
+\usepackage[pdftex]{graphicx} % enhanced support for graphics
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{subcaption} % support for subcaptions
+\usepackage{float}
+\usepackage{tikz}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{rotating}
+
+% Algorithms
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+% Others
+\usepackage{amsthm} % theorems AMS style
+\usepackage{amssymb} % math symbols
+\usepackage{amstext} % typeset text in math environments
+\usepackage{amsmath} % AMS math­e­mat­i­cal fa­cil­i­ties
+\usepackage{epstopdf} % con­vert EPS to 'en­cap­su­lated' PDF us­ing ghostscript
+\usepackage{mathptmx}
+\usepackage{etoolbox}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{multicol}
+% \usepackage{textcomp}
+\usepackage{footnote}
+% SB: According to the hyperref documentation, the algorithm package should be loaded after hyperref
+\usepackage[pdftex,breaklinks,bookmarksnumbered,linktocpage=false,hidelinks=true]{hyperref}
+\usepackage{bm} % bold symbols in math\usepackage{xparse}
+\usepackage[section]{placeins}
+\usepackage{lipsum}
+\usepackage{lineno,hyperref}
+\usepackage[makeroom]{cancel} %cancel terms
+\usepackage{multirow} 
+\usepackage{booktabs} 
+\usepackage{lscape}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor,soul}
+\usepackage[framemethod=tikz]{mdframed}
+
+\usepackage[capitalize]{cleveref} % in­tel­li­gent cross-ref­er­enc­ing
+% Adjusting cleveref package
+\crefalias{subequation}{equation} % subequations counter = equations counter
+\crefalias{eqnarray}{equation} % subequations counter = equations counter
+\crefformat{pluraleq}{Eqs.~(#2#1#3)} % defining "plural" equations  
+\Crefformat{pluraleq}{Equations~(#2#1#3)} % defining "plural" equations  
+
+%REFERENCES
+%\usepackage{cite}
+\usepackage[sorting = none, backend = bibtex, maxbibnames=99, style=numeric-comp]{biblatex}
+\addbibresource{references.bib}
+
+\graphicspath{ {figs/} }
+
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+
+\setcounter{secnumdepth}{4}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "dissertation"
+%%% End:
