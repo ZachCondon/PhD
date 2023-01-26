@@ -1,5 +1,79 @@
 \documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
 
 \begin{document}
-Hello! This is my first \LaTeX\ document.
+\begin{center}
+MAXED outline
+\end{center}
+*Previously described: what neutron spectrum unfolding is*\\
+
+\hfill
+
+% \break
+
+What I need to do:
+\begin{enumerate}
+\item Find LLNL real world detector response
+\item Determine the source used to get that DR
+\item Get detector response matrices for the following three sources:
+\begin{itemize}
+\item Plane source
+\item Point source
+\item Surrounding source
+\end{itemize}
+I'm going to make a new script that will scrape the appropriate MCNP output files to get the detector response matrix for each example. It will be in it's own folder in my local repo and will save each DRM as its own .csv file. There will be \textbf{two} versions of each DRM. One in which the TLDs are depth averaged and the other in which they are not.
+\item Determine what the error is for the TLDs that are modeled (it will be called something like counting error)
+\item Make a script that takes all of the IAEA spectra and interpolates them to the 84 energy bin structure. Save this as a .csv
+\item Run MAXED with the following examples:
+	\begin{itemize}
+	\item LLNL detector response, depth-averaged DRM for planar source, guess spectrum at exact reported value of IAEA.
+	\item LLNL detector response, depth-averaged DRM for point source, guess spectrum at exact reported value of IAEA.
+	\item LLNL detector response, depth-averaged DRM for surrounding source, guess spectrum at exact reported value of IAEA.
+	\item LLNL detector response, depth-averaged DRM for planar source, guess spectrum at 90\% reported value of IAEA.
+	\item LLNL detector response, depth-averaged DRM for point source, guess spectrum at 90\% reported value of IAEA.
+	\item LLNL detector response, depth-averaged DRM for surrounding source, guess spectrum at 90\% reported value of IAEA.\\
+	\textbf{Determine the best DRM to use from the above examples}
+	\item LLNL detector response, best DRM, guess spectrum at 50\% reported value from IAEA
+	\item LLNL detector response, best DRM, different spectrum at 100\% reported value from IAEA
+	\item LLNL detector response, best DRM, different spectrum at 100\% reported value from IAEA
+	\item LLNL detector response, random DRM, correct spectrum at 100\% reported value from IAEA
+	
+	\end{itemize}
+\item Make a nice script that will generate pretty graphs for everything I need for this description of MAXED.\\
+Details for this script
+	\begin{itemize}
+	\item Points to folder that contains all three DRMs (plane source, point source, surrounding source)
+	\item Points to folder containing the IAEA spectra (these spectra have already been interpolated to the 84 energy bins.
+	\item Points to folder containing the LLNL detector response
+	\item Runs each MAXED example described above.
+	\item Makes the pretty graphs for each.
+	\end{itemize}
+
+\end{enumerate}
+\break
+
+
+Introduction to MAXED
+\begin{itemize}
+   \item what is dual annealing
+   \item How is MAXED different
+   \item What inputs does MAXED need
+   \item How does MAXED measure the quality of its output
+\end{itemize}
+
+MAXED successes from literature\\
+
+My MAXED results
+\begin{itemize}
+\item Real world detector response from LLNL
+\item Real world detector response from AWE
+\end{itemize}
+
+Quality of results
+\begin{itemize}
+\item The statistic measure that MAXED uses $\chi^2$
+\item Comparing the output detector response and the output spectrum
+\end{itemize}
+   
+   
 \end{document}

@@ -1,2 +1,0 @@
-Important Note:
-The first column needs to be manually input for the detector response matrices (all of the csv files). I was spending too much time on trying to get the code to do it all and realized that I should just keep being productive instead. I'll put this in my notes for something that can be improved on.
