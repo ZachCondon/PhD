@@ -1,0 +1,11 @@
+*****Notes for PNS model run generated at 2022-08-30_1358*****. 
+
+    Number of energy bins: 84. 
+    Source informationSource 2: Spherical shell encompassing detector, emitting inward.
+
+    NOTE: In case the run times out, the file *_cont.bash will continue the run.
+
+This is a run with a spherical shell at an nps of 1e10. 
+I will be comparing this to the run like Paige's at the same nps. 
+end 
+If this is a broad spectrum source, energy info will be below in order from lowest to highest energy:

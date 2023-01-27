@@ -4,7 +4,6 @@
  
 import glob
 import pickle
-import matplotlib.pyplot as plt
 import numpy as np
 import csv
 
@@ -79,6 +78,8 @@ class allData:
         for i in range(84):
             for edTLDs in range(len(self.equal_distance_TLDs)):
                 for edTLD in self.equal_distance_TLDs[edTLDs]:
+                    print(self.equal_distance_TLDs[edTLDs])
+                    input()
                     averageTallies[edTLDs,i] += self.data[dataset][self.numerical_E_bins[i]]['Mean'][edTLD]
                 averageTallies[edTLDs,i] = averageTallies[edTLDs,i]/len(self.equal_distance_TLDs[edTLDs])
         return averageTallies, dataset
@@ -132,28 +133,17 @@ class allData:
         yError = self.get_axis_error(self.Y_tlds)
         zError = self.get_axis_error(self.Z_tlds)
         
-        with open(dataset + '_xMeanTallies.csv', 'w', newline='') as f:
-            write = csv.writer(f)
-            write.writerows(xTallies)
+        allTallies = np.concatenate((xTallies,yTallies,zTallies),axis=0)
+        allErrors = np.concatenate((xError,yError,zError),axis=0)
         
-        with open(dataset + '_yMeanTallies.csv', 'w', newline='') as f:
+        with open(dataset + 'meanTallies.csv', 'w', newline='') as f:
             write = csv.writer(f)
-            write.writerows(yTallies)
-        
-        with open(dataset + '_zMeanTallies.csv', 'w', newline='') as f:
-            write = csv.writer(f)
-            write.writerows(zTallies)
+            write.writerow(self.E_bins)
+            write.writerows(allTallies)
             
-        with open(dataset + '_xErrorTallies.csv', 'w', newline='') as f:
+        with open(dataset + 'errorTallies.csv', 'w', newline='') as f:
             write = csv.writer(f)
-            write.writerows(xError)
-            
-        with open(dataset + '_yErrorTallies.csv', 'w', newline='') as f:
-            write = csv.writer(f)
-            write.writerows(yError)
-            
-        with open(dataset + '_zErrorTallies.csv', 'w', newline='') as f:
-            write = csv.writer(f)
-            write.writerows(zError)
+            write.writerow(self.E_bins)
+            write.writerows(allErrors)
         
 data = allData()

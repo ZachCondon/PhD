@@ -1,0 +1,640 @@
+MCNP6 model of the LLNL PNS sphere (3.98e-06 MeV)
+C    **************CELL CARD**************
+C    -------MOIST AIR AROUND SPHERE-------
+801    1 -1.29E-3 -800 20000 20100 20200 20300 #2000 #2001 #2002 #2003 #2004 &
+     imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    ---------SPHERE AND CYLINDER---------
+C    Poly sphere (outside of cylinder and holes)
+10000 20 -0.93  -20000 20100 20200 20300 #2000 imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    X-axis cylinder
+10100 20 -0.93  -20100 21000 21100 21200 21300 21400 21500 21600 21700 21800 &
+     21900 22000 22100 22200 22300 22400 22500 22600 22700 22800 &
+     imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    Y-axis cylinder
+10200 20 -0.93  -20200 20100 23000 23100 23200 23300 23400 23500 23600 23700 &
+     23800 23900 24000 24100 24200 24300 24400 24500 24600 24700 &
+     imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    Z-axis cylinder
+10300 20 -0.93  -20300 20100 20200 25000 25100 25200 25300 25400 25500 25600 &
+     25700 25800 25900 26000 26100 26200 26300 26400 26500 26600 26700 &
+     imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    ---------HOLES IN CYLINDER---------
+C             (Filled with air)         
+C    X-axis holes
+11000 1 -1.2E-3 (-21000:-21100:-21200:-21300:-21400:-21500:-21600:-21700:-21800:-21900:
+        -22000:-22100:-22200:-22300:-22400:-22500:-22600:-22700:-22800)-20100 #200 #201
+        #202 #203 #204 #205 #206 #207 #208 #209 #210 #211 #212 #213 #214 #215 #216 #217
+        #218 #400 #401 #402 #403 #404 #405 #406 #407 #408 #409 #410 #411 #412 #413 #414
+        #415 #416 #417 #418 #300 #301 #302 #303 #304 #305 #306 #307 #308 #309 #310 #311
+        #312 #313 #314 #315 #316 #317 #318 #500 #501 #502 #503 #504 #505 #506 #507 #508
+        #509 #510 #511 #512 #513 #514 #515 #516 #517 #518 #600 #601 #602 #603 #604 #605
+        #606 #607 #608 #609 #610 #611 #612 #613 #614 #615 #616 #617 #618 #700 #701 #702
+        #703 #704 #705 #706 #707 #708 #709 #710 #711 #712 #713 #714 #715 #716 #717 #718
+        imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    Y-axis holes
+11100 1 -1.2E-3 (-23000:-23100:-23200:-23300:-23400:-23500:-23600:-23700:-23800:-23900:
+        -24000:-24100:-24200:-24300:-24400:-24500:-24600:-24700) -20200 #219 #220 #221
+        #222 #223 #224 #225 #226 #227 #228 #229 #230 #231 #232 #233 #234 #235 #236 #419
+        #420 #421 #422 #423 #424 #425 #426 #427 #428 #429 #430 #431 #432 #433 #434 #435
+        #436 #319 #320 #321 #322 #323 #324 #325 #326 #327 #328 #329 #330 #331 #332 #333
+        #334 #335 #336 #519 #520 #521 #522 #523 #524 #525 #526 #527 #528 #529 #530 #531
+        #532 #533 #534 #535 #536 #619 #620 #621 #622 #623 #624 #625 #626 #627 #628 #629
+        #630 #631 #632 #633 #634 #635 #636 #719 #720 #721 #722 #723 #724 #725 #726 #727
+        #728 #729 #730 #731 #732 #733 #734 #735 #736 imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    Z-axis holes
+11200 1 -1.2E-3 (-25000:-25100:-25200:-25300:-25400:-25500:-25600:-25700:-25800:-25900:
+        -26000:-26100:-26200:-26300:-26400:-26500:-26600:-26700)-20300 #237 #238 #239 #240
+        #241 #242 #243 #244 #245 #246 #247 #248 #249 #250 #251 #252 #253 #254 #437 #438 #439
+        #440 #441 #442 #443 #444 #445 #446 #447 #448 #449 #450 #451 #452 #453 #454 #337
+        #338 #339 #340 #341 #342 #343 #344 #345 #346 #347 #348 #349 #350 #351 #352 #353
+        #354 #537 #538 #539 #540 #541 #542 #543 #544 #545 #546 #547 #548 #549 #550 #551
+        #552 #553 #554 #637 #638 #639 #640 #641 #642 #643 #644 #645 #646 #647 #648 #649
+        #650 #651 #652 #653 #654 #737 #738 #739 #740 #741 #742 #743 #744 #745 #746 #747
+        #748 #749 #750 #751 #752 #753 #754 imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    --------TLD MATERIAL (A-SIDE)------
+C    X-axis front casing of Li-6
+200 24 -1.42 -200 imp:n=1 imp:a=1 imp:p=1 imp:e=1
+201 LIKE 200 BUT TRCL= (3 0 0)
+202 LIKE 200 BUT TRCL= (-3 0 0)
+203 LIKE 200 BUT TRCL= (6 0 0)
+204 LIKE 200 BUT TRCL= (-5.8 0 0)
+205 LIKE 200 BUT TRCL= (8 0 0)
+206 LIKE 200 BUT TRCL= (-7.8 0 0)
+207 LIKE 200 BUT TRCL= (9 0 0)
+208 LIKE 200 BUT TRCL= (-8.8 0 0)
+209 LIKE 200 BUT TRCL= (10 0 0)
+210 LIKE 200 BUT TRCL= (-10 0 0)
+211 LIKE 200 BUT TRCL= (11 0 0)
+212 LIKE 200 BUT TRCL= (-11 0 0)
+213 LIKE 200 BUT TRCL= (12 0 0)
+214 LIKE 200 BUT TRCL= (-12 0 0)
+215 LIKE 200 BUT TRCL= (13 0 0)
+216 LIKE 200 BUT TRCL= (-13 0 0)
+217 LIKE 200 BUT TRCL= (14 0 0)
+218 LIKE 200 BUT TRCL= (-14 0 0)
+C    Y-axis front casing of Li-6
+219 24 -1.42 -201 TRCL= (0 3 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+220 24 -1.42 -202 TRCL= (0 -3 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+221 24 -1.42 -201 TRCL= (0 6 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+222 24 -1.42 -202 TRCL= (0 -5.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+223 24 -1.42 -201 TRCL= (0 8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+224 24 -1.42 -202 TRCL= (0 -7.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+225 24 -1.42 -201 TRCL= (0 9 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+226 24 -1.42 -202 TRCL= (0 -8.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+227 24 -1.42 -201 TRCL= (0 10 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+228 24 -1.42 -202 TRCL= (0 -10 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+229 24 -1.42 -201 TRCL= (0 11 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+230 24 -1.42 -202 TRCL= (0 -11 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+231 24 -1.42 -201 TRCL= (0 12 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+232 24 -1.42 -202 TRCL= (0 -12 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+233 24 -1.42 -201 TRCL= (0 13 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+234 24 -1.42 -202 TRCL= (0 -13 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+235 24 -1.42 -201 TRCL= (0 14 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+236 24 -1.42 -202 TRCL= (0 -14 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    Z-axis front casing of Li-6
+237 24 -1.42 -203 TRCL= (-1 0 3) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+238 24 -1.42 -204 TRCL= (-1 0 -3) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+239 24 -1.42 -203 TRCL= (-1 0 6) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+240 24 -1.42 -204 TRCL= (-1 0 -5.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+241 24 -1.42 -203 TRCL= (-1 0 8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+242 24 -1.42 -204 TRCL= (-1 0 -7.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+243 24 -1.42 -203 TRCL= (-1 0 9) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+244 24 -1.42 -204 TRCL= (-1 0 -8.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+245 24 -1.42 -203 TRCL= (-1 0 10) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+246 24 -1.42 -204 TRCL= (-1 0 -10) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+247 24 -1.42 -203 TRCL= (-1 0 11) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+248 24 -1.42 -204 TRCL= (-1 0 -11) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+249 24 -1.42 -203 TRCL= (-1 0 12) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+250 24 -1.42 -204 TRCL= (-1 0 -12) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+251 24 -1.42 -203 TRCL= (-1 0 13) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+252 24 -1.42 -204 TRCL= (-1 0 -13) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+253 24 -1.42 -203 TRCL= (-1 0 14) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+254 24 -1.42 -204 TRCL= (-1 0 -14) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    X-axis Li-6
+400 22 -2.635 -400 imp:n=3 imp:a=3 imp:p=3 imp:e=3
+401 LIKE 400 BUT TRCL= (3 0 0)
+402 LIKE 400 BUT TRCL= (-3 0 0)
+403 LIKE 400 BUT TRCL= (6 0 0)
+404 LIKE 400 BUT TRCL= (-5.8 0 0)
+405 LIKE 400 BUT TRCL= (8 0 0)
+406 LIKE 400 BUT TRCL= (-7.8 0 0)
+407 LIKE 400 BUT TRCL= (9 0 0)
+408 LIKE 400 BUT TRCL= (-8.8 0 0)
+409 LIKE 400 BUT TRCL= (10 0 0)
+410 LIKE 400 BUT TRCL= (-10 0 0)
+411 LIKE 400 BUT TRCL= (11 0 0)
+412 LIKE 400 BUT TRCL= (-11 0 0)
+413 LIKE 400 BUT TRCL= (12 0 0)
+414 LIKE 400 BUT TRCL= (-12 0 0)
+415 LIKE 400 BUT TRCL= (13 0 0)
+416 LIKE 400 BUT TRCL= (-13 0 0)
+417 LIKE 400 BUT TRCL= (14 0 0)
+418 LIKE 400 BUT TRCL= (-14 0 0)
+C    Y-axis Li-6
+419 22 -2.635 -401 TRCL= (0 3 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+420 22 -2.635 -402 TRCL= (0 -3 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+421 22 -2.635 -401 TRCL= (0 6 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+422 22 -2.635 -402 TRCL= (0 -5.8 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+423 22 -2.635 -401 TRCL= (0 8 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+424 22 -2.635 -402 TRCL= (0 -7.8 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+425 22 -2.635 -401 TRCL= (0 9 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+426 22 -2.635 -402 TRCL= (0 -8.8 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+427 22 -2.635 -401 TRCL= (0 10 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+428 22 -2.635 -402 TRCL= (0 -10 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+429 22 -2.635 -401 TRCL= (0 11 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+430 22 -2.635 -402 TRCL= (0 -11 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+431 22 -2.635 -401 TRCL= (0 12 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+432 22 -2.635 -402 TRCL= (0 -12 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+433 22 -2.635 -401 TRCL= (0 13 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+434 22 -2.635 -402 TRCL= (0 -13 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+435 22 -2.635 -401 TRCL= (0 14 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+436 22 -2.635 -402 TRCL= (0 -14 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+C    Z-axis Li-6
+437 22 -2.635 -403 TRCL= (-1 0 3) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+438 22 -2.635 -404 TRCL= (-1 0 -3) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+439 22 -2.635 -403 TRCL= (-1 0 6) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+440 22 -2.635 -404 TRCL= (-1 0 -5.8) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+441 22 -2.635 -403 TRCL= (-1 0 8) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+442 22 -2.635 -404 TRCL= (-1 0 -7.8) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+443 22 -2.635 -403 TRCL= (-1 0 9) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+444 22 -2.635 -404 TRCL= (-1 0 -8.8) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+445 22 -2.635 -403 TRCL= (-1 0 10) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+446 22 -2.635 -404 TRCL= (-1 0 -10) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+447 22 -2.635 -403 TRCL= (-1 0 11) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+448 22 -2.635 -404 TRCL= (-1 0 -11) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+449 22 -2.635 -403 TRCL= (-1 0 12) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+450 22 -2.635 -404 TRCL= (-1 0 -12) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+451 22 -2.635 -403 TRCL= (-1 0 13) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+452 22 -2.635 -404 TRCL= (-1 0 -13) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+453 22 -2.635 -403 TRCL= (-1 0 14) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+454 22 -2.635 -404 TRCL= (-1 0 -14) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+C    X-axis back casing of Li-6
+300 24 -1.42 -300 imp:n=1 imp:a=1 imp:p=1 imp:e=1
+301 LIKE 300 BUT TRCL= (3 0 0)
+302 LIKE 300 BUT TRCL= (-3 0 0)
+303 LIKE 300 BUT TRCL= (6 0 0)
+304 LIKE 300 BUT TRCL= (-5.8 0 0)
+305 LIKE 300 BUT TRCL= (8 0 0)
+306 LIKE 300 BUT TRCL= (-7.8 0 0)
+307 LIKE 300 BUT TRCL= (9 0 0)
+308 LIKE 300 BUT TRCL= (-8.8 0 0)
+309 LIKE 300 BUT TRCL= (10 0 0)
+310 LIKE 300 BUT TRCL= (-10 0 0)
+311 LIKE 300 BUT TRCL= (11 0 0)
+312 LIKE 300 BUT TRCL= (-11 0 0)
+313 LIKE 300 BUT TRCL= (12 0 0)
+314 LIKE 300 BUT TRCL= (-12 0 0)
+315 LIKE 300 BUT TRCL= (13 0 0)
+316 LIKE 300 BUT TRCL= (-13 0 0)
+317 LIKE 300 BUT TRCL= (14 0 0)
+318 LIKE 300 BUT TRCL= (-14 0 0)
+C    Y-axis back casing of Li-6
+319 24 -1.42 -301 TRCL= (0 3 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+320 24 -1.42 -302 TRCL= (0 -3 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+321 24 -1.42 -301 TRCL= (0 6 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+322 24 -1.42 -302 TRCL= (0 -5.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+323 24 -1.42 -301 TRCL= (0 8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+324 24 -1.42 -302 TRCL= (0 -7.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+325 24 -1.42 -301 TRCL= (0 9 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+326 24 -1.42 -302 TRCL= (0 -8.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+327 24 -1.42 -301 TRCL= (0 10 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+328 24 -1.42 -302 TRCL= (0 -10 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+329 24 -1.42 -301 TRCL= (0 11 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+330 24 -1.42 -302 TRCL= (0 -11 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+331 24 -1.42 -301 TRCL= (0 12 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+332 24 -1.42 -302 TRCL= (0 -12 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+333 24 -1.42 -301 TRCL= (0 13 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+334 24 -1.42 -302 TRCL= (0 -13 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+335 24 -1.42 -301 TRCL= (0 14 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+336 24 -1.42 -302 TRCL= (0 -14 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    Z-axis front casing of Li-6
+337 24 -1.42 -303 TRCL= (-1 0 3) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+338 24 -1.42 -304 TRCL= (-1 0 -3) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+339 24 -1.42 -303 TRCL= (-1 0 6) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+340 24 -1.42 -304 TRCL= (-1 0 -5.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+341 24 -1.42 -303 TRCL= (-1 0 8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+342 24 -1.42 -304 TRCL= (-1 0 -7.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+343 24 -1.42 -303 TRCL= (-1 0 9) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+344 24 -1.42 -304 TRCL= (-1 0 -8.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+345 24 -1.42 -303 TRCL= (-1 0 10) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+346 24 -1.42 -304 TRCL= (-1 0 -10) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+347 24 -1.42 -303 TRCL= (-1 0 11) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+348 24 -1.42 -304 TRCL= (-1 0 -11) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+349 24 -1.42 -303 TRCL= (-1 0 12) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+350 24 -1.42 -304 TRCL= (-1 0 -12) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+351 24 -1.42 -303 TRCL= (-1 0 13) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+352 24 -1.42 -304 TRCL= (-1 0 -13) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+353 24 -1.42 -303 TRCL= (-1 0 14) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+354 24 -1.42 -304 TRCL= (-1 0 -14) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    --------TLD MATERIAL (B-SIDE)------
+C    X-axis front casing of Li-7
+500 24 -1.42 -500 imp:n=1 imp:a=1 imp:p=1 imp:e=1
+501 LIKE 500 BUT TRCL= (3 0 0)
+502 LIKE 500 BUT TRCL= (-3 0 0)
+503 LIKE 500 BUT TRCL= (6 0 0)
+504 LIKE 500 BUT TRCL= (-5.8 0 0)
+505 LIKE 500 BUT TRCL= (8 0 0)
+506 LIKE 500 BUT TRCL= (-7.8 0 0)
+507 LIKE 500 BUT TRCL= (9 0 0)
+508 LIKE 500 BUT TRCL= (-8.8 0 0)
+509 LIKE 500 BUT TRCL= (10 0 0)
+510 LIKE 500 BUT TRCL= (-10 0 0)
+511 LIKE 500 BUT TRCL= (11 0 0)
+512 LIKE 500 BUT TRCL= (-11 0 0)
+513 LIKE 500 BUT TRCL= (12 0 0)
+514 LIKE 500 BUT TRCL= (-12 0 0)
+515 LIKE 500 BUT TRCL= (13 0 0)
+516 LIKE 500 BUT TRCL= (-13 0 0)
+517 LIKE 500 BUT TRCL= (14 0 0)
+518 LIKE 500 BUT TRCL= (-14 0 0)
+C    Y-axis front casing of Li-7
+519 24 -1.42 -501 TRCL= (0 3 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+520 24 -1.42 -502 TRCL= (0 -3 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+521 24 -1.42 -501 TRCL= (0 6 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+522 24 -1.42 -502 TRCL= (0 -5.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+523 24 -1.42 -501 TRCL= (0 8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+524 24 -1.42 -502 TRCL= (0 -7.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+525 24 -1.42 -501 TRCL= (0 9 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+526 24 -1.42 -502 TRCL= (0 -8.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+527 24 -1.42 -501 TRCL= (0 10 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+528 24 -1.42 -502 TRCL= (0 -10 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+529 24 -1.42 -501 TRCL= (0 11 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+530 24 -1.42 -502 TRCL= (0 -11 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+531 24 -1.42 -501 TRCL= (0 12 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+532 24 -1.42 -502 TRCL= (0 -12 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+533 24 -1.42 -501 TRCL= (0 13 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+534 24 -1.42 -502 TRCL= (0 -13 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+535 24 -1.42 -501 TRCL= (0 14 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+536 24 -1.42 -502 TRCL= (0 -14 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    Z-axis front casing of Li-7
+537 24 -1.42 -503 TRCL= (-1 0 3) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+538 24 -1.42 -504 TRCL= (-1 0 -3) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+539 24 -1.42 -503 TRCL= (-1 0 6) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+540 24 -1.42 -504 TRCL= (-1 0 -5.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+541 24 -1.42 -503 TRCL= (-1 0 8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+542 24 -1.42 -504 TRCL= (-1 0 -7.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+543 24 -1.42 -503 TRCL= (-1 0 9) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+544 24 -1.42 -504 TRCL= (-1 0 -8.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+545 24 -1.42 -503 TRCL= (-1 0 10) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+546 24 -1.42 -504 TRCL= (-1 0 -10) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+547 24 -1.42 -503 TRCL= (-1 0 11) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+548 24 -1.42 -504 TRCL= (-1 0 -11) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+549 24 -1.42 -503 TRCL= (-1 0 12) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+550 24 -1.42 -504 TRCL= (-1 0 -12) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+551 24 -1.42 -503 TRCL= (-1 0 13) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+552 24 -1.42 -504 TRCL= (-1 0 -13) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+553 24 -1.42 -503 TRCL= (-1 0 14) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+554 24 -1.42 -504 TRCL= (-1 0 -14) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    X-axis Li-7
+600 23 -2.635 -600 imp:n=3 imp:a=3 imp:p=3 imp:e=3
+601 LIKE 600 BUT TRCL= (3 0 0)
+602 LIKE 600 BUT TRCL= (-3 0 0)
+603 LIKE 600 BUT TRCL= (6 0 0)
+604 LIKE 600 BUT TRCL= (-5.8 0 0)
+605 LIKE 600 BUT TRCL= (8 0 0)
+606 LIKE 600 BUT TRCL= (-7.8 0 0)
+607 LIKE 600 BUT TRCL= (9 0 0)
+608 LIKE 600 BUT TRCL= (-8.8 0 0)
+609 LIKE 600 BUT TRCL= (10 0 0)
+610 LIKE 600 BUT TRCL= (-10 0 0)
+611 LIKE 600 BUT TRCL= (11 0 0)
+612 LIKE 600 BUT TRCL= (-11 0 0)
+613 LIKE 600 BUT TRCL= (12 0 0)
+614 LIKE 600 BUT TRCL= (-12 0 0)
+615 LIKE 600 BUT TRCL= (13 0 0)
+616 LIKE 600 BUT TRCL= (-13 0 0)
+617 LIKE 600 BUT TRCL= (14 0 0)
+618 LIKE 600 BUT TRCL= (-14 0 0)
+C    Y-axis Li-7
+619 23 -2.635 -601 TRCL= (0 3 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+620 23 -2.635 -602 TRCL= (0 -3 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+621 23 -2.635 -601 TRCL= (0 6 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+622 23 -2.635 -602 TRCL= (0 -5.8 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+623 23 -2.635 -601 TRCL= (0 8 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+624 23 -2.635 -602 TRCL= (0 -7.8 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+625 23 -2.635 -601 TRCL= (0 9 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+626 23 -2.635 -602 TRCL= (0 -8.8 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+627 23 -2.635 -601 TRCL= (0 10 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+628 23 -2.635 -602 TRCL= (0 -10 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+629 23 -2.635 -601 TRCL= (0 11 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+630 23 -2.635 -602 TRCL= (0 -11 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+631 23 -2.635 -601 TRCL= (0 12 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+632 23 -2.635 -602 TRCL= (0 -12 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+633 23 -2.635 -601 TRCL= (0 13 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+634 23 -2.635 -602 TRCL= (0 -13 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+635 23 -2.635 -601 TRCL= (0 14 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+636 23 -2.635 -602 TRCL= (0 -14 0) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+C    Z-axis Li-7
+637 23 -2.635 -603 TRCL= (-1 0 3) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+638 23 -2.635 -604 TRCL= (-1 0 -3) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+639 23 -2.635 -603 TRCL= (-1 0 6) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+640 23 -2.635 -604 TRCL= (-1 0 -5.8) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+641 23 -2.635 -603 TRCL= (-1 0 8) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+642 23 -2.635 -604 TRCL= (-1 0 -7.8) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+643 23 -2.635 -603 TRCL= (-1 0 9) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+644 23 -2.635 -604 TRCL= (-1 0 -8.8) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+645 23 -2.635 -603 TRCL= (-1 0 10) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+646 23 -2.635 -604 TRCL= (-1 0 -10) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+647 23 -2.635 -603 TRCL= (-1 0 11) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+648 23 -2.635 -604 TRCL= (-1 0 -11) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+649 23 -2.635 -603 TRCL= (-1 0 12) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+650 23 -2.635 -604 TRCL= (-1 0 -12) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+651 23 -2.635 -603 TRCL= (-1 0 13) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+652 23 -2.635 -604 TRCL= (-1 0 -13) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+653 23 -2.635 -603 TRCL= (-1 0 14) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+654 23 -2.635 -604 TRCL= (-1 0 -14) imp:n=3 imp:a=3 imp:p=3 imp:e=3
+C    X-axis back casing of Li-7
+700 24 -1.42 -700 imp:n=1 imp:a=1 imp:p=1 imp:e=1
+701 LIKE 700 BUT TRCL= (3 0 0)
+702 LIKE 700 BUT TRCL= (-3 0 0)
+703 LIKE 700 BUT TRCL= (6 0 0)
+704 LIKE 700 BUT TRCL= (-5.8 0 0)
+705 LIKE 700 BUT TRCL= (8 0 0)
+706 LIKE 700 BUT TRCL= (-7.8 0 0)
+707 LIKE 700 BUT TRCL= (9 0 0)
+708 LIKE 700 BUT TRCL= (-8.8 0 0)
+709 LIKE 700 BUT TRCL= (10 0 0)
+710 LIKE 700 BUT TRCL= (-10 0 0)
+711 LIKE 700 BUT TRCL= (11 0 0)
+712 LIKE 700 BUT TRCL= (-11 0 0)
+713 LIKE 700 BUT TRCL= (12 0 0)
+714 LIKE 700 BUT TRCL= (-12 0 0)
+715 LIKE 700 BUT TRCL= (13 0 0)
+716 LIKE 700 BUT TRCL= (-13 0 0)
+717 LIKE 700 BUT TRCL= (14 0 0)
+718 LIKE 700 BUT TRCL= (-14 0 0)
+C    Y-axis back casing of Li-7
+719 24 -1.42 -701 TRCL= (0 3 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+720 24 -1.42 -702 TRCL= (0 -3 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+721 24 -1.42 -701 TRCL= (0 6 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+722 24 -1.42 -702 TRCL= (0 -5.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+723 24 -1.42 -701 TRCL= (0 8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+724 24 -1.42 -702 TRCL= (0 -7.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+725 24 -1.42 -701 TRCL= (0 9 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+726 24 -1.42 -702 TRCL= (0 -8.8 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+727 24 -1.42 -701 TRCL= (0 10 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+728 24 -1.42 -702 TRCL= (0 -10 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+729 24 -1.42 -701 TRCL= (0 11 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+730 24 -1.42 -702 TRCL= (0 -11 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+731 24 -1.42 -701 TRCL= (0 12 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+732 24 -1.42 -702 TRCL= (0 -12 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+733 24 -1.42 -701 TRCL= (0 13 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+734 24 -1.42 -702 TRCL= (0 -13 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+735 24 -1.42 -701 TRCL= (0 14 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+736 24 -1.42 -702 TRCL= (0 -14 0) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    Z-axis front casing of Li-7
+737 24 -1.42 -703 TRCL= (-1 0 3) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+738 24 -1.42 -704 TRCL= (-1 0 -3) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+739 24 -1.42 -703 TRCL= (-1 0 6) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+740 24 -1.42 -704 TRCL= (-1 0 -5.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+741 24 -1.42 -703 TRCL= (-1 0 8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+742 24 -1.42 -704 TRCL= (-1 0 -7.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+743 24 -1.42 -703 TRCL= (-1 0 9) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+744 24 -1.42 -704 TRCL= (-1 0 -8.8) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+745 24 -1.42 -703 TRCL= (-1 0 10) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+746 24 -1.42 -704 TRCL= (-1 0 -10) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+747 24 -1.42 -703 TRCL= (-1 0 11) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+748 24 -1.42 -704 TRCL= (-1 0 -11) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+749 24 -1.42 -703 TRCL= (-1 0 12) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+750 24 -1.42 -704 TRCL= (-1 0 -12) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+751 24 -1.42 -703 TRCL= (-1 0 13) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+752 24 -1.42 -704 TRCL= (-1 0 -13) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+753 24 -1.42 -703 TRCL= (-1 0 14) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+754 24 -1.42 -704 TRCL= (-1 0 -14) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    ---------------CRADLE--------------
+C    Upper ring
+2000 3 -2.7 (-2001 2000):(-2003 2002):(-2005 2004):(-2007 2006) &
+           :(-2009 2008):(-2011 2010):(-2013 2012) imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    Lower ring and base
+2001 3 -2.7 -2014 2015 2016 2017 imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    Legs
+2002 3 -2.7 -2020 #2000 #2001 imp:n=1 imp:a=1 imp:p=1 imp:e=1
+2003 3 -2.7 -2021 #2000 #2001 imp:n=1 imp:a=1 imp:p=1 imp:e=1
+2004 3 -2.7 -2022 #2000 #2001 imp:n=1 imp:a=1 imp:p=1 imp:e=1
+C    ----------EXTERNAL UNIVERSE--------
+999  0 800 imp:n=0 imp:a=0 imp:p=0 imp:e=0
+C    ************END OF CELLS************
+
+C    *************SURFACE CARD************
+C    -----Container for entire sphere-----
+800  RPP -110 110 -110 110 -161.2 110
+C    -----SPHERE AND CYLINDER INSERTS-----
+20000 SPH   0 0 0   15.1225
+20100 RCC   -15.1225 0 0    30.245 0 0   1.89103 $ X-axis cyl
+20200 RCC   0 -15.1225 0    0 30.245 0   1.89103 $ Y-axis cyl
+20300 RCC   0 0 -15.1225    0 0 30.245   1.89103 $ Z-axis cyl
+C    HOLES IN CYLINDER
+C    ----------X-axis TLD slots-----------
+21000 RPP -14.1258 -13.7555  -0.5 0.5  -1.10516 1.89484
+21100 RPP -13.1155 -12.7585  -0.5 0.5  -1.10516 1.89484
+21200 RPP -12.0995 -11.7495  -0.5 0.5  -1.10516 1.89484
+21300 RPP -11.0925 -10.7355  -0.5 0.5  -1.10516 1.89484
+21400 RPP -10.0865 -9.7205  -0.5 0.5  -1.10516 1.89484
+21500 RPP -9.0655 -8.6975  -0.5 0.5  -1.10516 1.89484
+21600 RPP -8.0625 -7.6725  -0.5 0.5  -1.10516 1.89484
+21700 RPP -6.0575 -5.6965  -0.5 0.5  -1.10516 1.89484
+21800 RPP -3.0875 -2.7015  -0.5 0.5  -1.10516 1.89484
+21900 RPP -0.1795 0.1795  -0.5 0.5  -1.10516 1.89484
+22000 RPP 2.7525 3.1155  -0.5 0.5  -1.10516 1.89484
+22100 RPP 5.7525 6.1135  -0.5 0.5  -1.10516 1.89484
+22200 RPP 7.7545 8.1245  -0.5 0.5  -1.10516 1.89484
+22300 RPP 8.7585 9.1295  -0.5 0.5  -1.10516 1.89484
+22400 RPP 9.7625 10.1565  -0.5 0.5  -1.10516 1.89484
+22500 RPP 10.7915 11.1705  -0.5 0.5  -1.10516 1.89484
+22600 RPP 11.8305 12.1995  -0.5 0.5  -1.10516 1.89484
+22700 RPP 12.8575 13.2255  -0.5 0.5  -1.10516 1.89484
+22800 RPP 13.8665 14.2235  -0.5 0.5  -1.10516 1.89484
+C    ----------Y-axis TLD slots-----------
+23000 RPP -0.5 0.5  -14.1258 -13.7555  -1.10516 1.89484
+23100 RPP -0.5 0.5  -13.1155 -12.7585  -1.10516 1.89484
+23200 RPP -0.5 0.5  -12.0995 -11.7495  -1.10516 1.89484
+23300 RPP -0.5 0.5  -11.0925 -10.7355  -1.10516 1.89484
+23400 RPP -0.5 0.5  -10.0865 -9.7205  -1.10516 1.89484
+23500 RPP -0.5 0.5  -9.0655 -8.6975  -1.10516 1.89484
+23600 RPP -0.5 0.5  -8.0625 -7.6725  -1.10516 1.89484
+23700 RPP -0.5 0.5  -6.0575 -5.6965  -1.10516 1.89484
+23800 RPP -0.5 0.5  -3.0875 -2.7015  -1.10516 1.89484
+23900 RPP -0.5 0.5  2.7525 3.1155  -1.10516 1.89484
+24000 RPP -0.5 0.5  5.7525 6.1135  -1.10516 1.89484
+24100 RPP -0.5 0.5  7.7545 8.1245  -1.10516 1.89484
+24200 RPP -0.5 0.5  8.7585 9.1295  -1.10516 1.89484
+24300 RPP -0.5 0.5  9.7625 10.1565  -1.10516 1.89484
+24400 RPP -0.5 0.5  10.7915 11.1705  -1.10516 1.89484
+24500 RPP -0.5 0.5  11.8305 12.1995  -1.10516 1.89484
+24600 RPP -0.5 0.5  12.8575 13.2255  -1.10516 1.89484
+24700 RPP -0.5 0.5  13.8665 14.2235  -1.10516 1.89484
+C    ----------Z-axis TLD slots-----------
+25000 RPP -1.89484 1.10516  -0.5 0.5  -14.1255 -13.7555
+25100 RPP -1.89484 1.10516  -0.5 0.5  -13.1155 -12.7585
+25200 RPP -1.89484 1.10516  -0.5 0.5  -12.0995 -11.7495
+25300 RPP -1.89484 1.10516  -0.5 0.5  -11.0925 -10.7355
+25400 RPP -1.89484 1.10516  -0.5 0.5  -10.0865 -9.7205
+25500 RPP -1.89484 1.10516  -0.5 0.5  -9.0655 -8.6975
+25600 RPP -1.89484 1.10516  -0.5 0.5  -8.0625 -7.6725
+25700 RPP -1.89484 1.10516  -0.5 0.5  -6.0575 -5.6965
+25800 RPP -1.89484 1.10516  -0.5 0.5  -3.0875 -2.7015
+25900 RPP -1.89484 1.10516  -0.5 0.5  2.7525 3.1155
+26000 RPP -1.89484 1.10516  -0.5 0.5  5.7525 6.1135
+26100 RPP -1.89484 1.10516  -0.5 0.5  7.7545 8.1245
+26200 RPP -1.89484 1.10516  -0.5 0.5  8.7585 9.1295
+26300 RPP -1.89484 1.10516  -0.5 0.5  9.7625 10.1565
+26400 RPP -1.89484 1.10516  -0.5 0.5  10.7915 11.1705
+26500 RPP -1.89484 1.10516  -0.5 0.5  11.8305 12.1995
+26600 RPP -1.89484 1.10516  -0.5 0.5  12.8575 13.2255
+26700 RPP -1.89484 1.10516  -0.5 0.5  13.8665 14.2235
+C    ---------X-axis TLD SURFACES---------
+200 RPP  0.0581  0.0781 -0.4275  0.4725  -0.603   1.814   $ Casing
+400 RPP  0.02    0.0581 -0.15875 0.15875 -0.15875 0.15875 $ Li-6
+300 RPP  0       0.02   -0.4725  0.4725  -0.603   1.814   $ Casing
+500 RPP -0.02    0      -0.4725  0.4725  -0.603   1.814   $ Casing
+600 RPP -0.0581 -0.02   -0.15875 0.15875 -0.15875 0.15875 $ Li-7
+700 RPP -0.0781 -0.0581 -0.4725  0.4725  -0.603   1.814   $ Casing
+C    -------(+) Y-axis TLD SURFACES-------
+201 RPP -0.4275  0.4725   0.0581  0.0781 -0.603   1.814   $ Casing
+401 RPP -0.15875 0.15875  0.02    0.0581 -0.15875 0.15875 $ Li-6
+301 RPP -0.4725  0.4725   0       0.02   -0.603   1.814   $ Casing
+501 RPP -0.4725  0.4725  -0.02    0      -0.603   1.814   $ Casing
+601 RPP -0.15875 0.15875 -0.0581 -0.02   -0.15875 0.15875 $ Li-7
+701 RPP -0.4725  0.4725  -0.0781 -0.0581 -0.603   1.814   $ Casing
+C    -------(-) Y-axis TLD SURFACES-------
+202 RPP -0.4275  0.4725  -0.0781 -0.0581 -0.603   1.814   $ Casing
+402 RPP -0.15875 0.15875 -0.0581 -0.02   -0.15875 0.15875 $ Li-6
+302 RPP -0.4725  0.4725  -0.02    0      -0.603   1.814   $ Casing
+502 RPP -0.4725  0.4725   0       0.02   -0.603   1.814   $ Casing
+602 RPP -0.15875 0.15875  0.02    0.0581 -0.15875 0.15875 $ Li-7
+702 RPP -0.4725  0.4725   0.0581  0.0781 -0.603   1.814   $ Casing
+C    -------(+) Z-axis TLD SURFACES-------
+203 RPP -0.603   1.814   -0.4275  0.4725   0.0581  0.0781 $ Casing
+403 RPP -0.15875 0.15875 -0.15875 0.15875  0.02    0.0581 $ Li-6
+303 RPP -0.603   1.814   -0.4725  0.4725   0       0.02   $ Casing
+503 RPP -0.603   1.814   -0.4725  0.4725  -0.02    0      $ Casing
+603 RPP -0.15875 0.15875 -0.15875 0.15875 -0.0581 -0.02   $ Li-7
+703 RPP -0.603   1.814   -0.4725  0.4725  -0.0781 -0.0581 $ Casing
+C    -------(-) Z-axis TLD SURFACES-------
+204 RPP -0.603   1.814   -0.4275  0.4725  -0.0781 -0.0581 $ Casing
+404 RPP -0.15875 0.15875 -0.15875 0.15875 -0.0581 -0.02   $ Li-6
+304 RPP -0.603   1.814   -0.4725  0.4725  -0.02    0      $ Casing
+504 RPP -0.603   1.814   -0.4725  0.4725   0       0.02   $ Casing
+604 RPP -0.15875 0.15875 -0.15875 0.15875  0.02    0.0581 $ Li-7
+704 RPP -0.603   1.814   -0.4725  0.4725   0.0581  0.0781 $ Casing
+C    ----------CRADLE UPPER RING----------
+2000  RCC 0 0 -14.03 0 0 0.43 6.4   $ Part 1
+2001  RCC 0 0 -14.03 0 0 0.43 8.2   $ Part 1
+2002  RCC 0 0 -13.60 0 0 0.10 6.6   $ Part 2
+2003  RCC 0 0 -13.60 0 0 0.10 8.2   $ Part 2
+2004  RCC 0 0 -13.50 0 0 0.10 6.8   $ Part 3
+2005  RCC 0 0 -13.50 0 0 0.10 8.2   $ Part 3
+2006  RCC 0 0 -13.40 0 0 0.10 7.0   $ Part 4
+2007  RCC 0 0 -13.40 0 0 0.10 8.2   $ Part 4
+2008  RCC 0 0 -13.30 0 0 0.10 7.2   $ Part 5
+2009  RCC 0 0 -13.30 0 0 0.10 8.2   $ Part 5
+2010  RCC 0 0 -13.20 0 0 0.10 7.4   $ Part 6
+2011  RCC 0 0 -13.20 0 0 0.10 8.2   $ Part 6
+2012  RCC 0 0 -13.10 0 0 0.07 7.6   $ Part 7
+2013  RCC 0 0 -13.10 0 0 0.07 8.1   $ Part 7
+C    -------------CRADLE BASE-------------
+2014  RCC  0    0    -31.16 0 0    0.80 16.0  $ Ring
+2015  RCC  0.0  8.0  -31.16 0 0    0.80 5.0   $ Holes
+2016  RCC  6.9 -4.0  -31.16 0 0    0.80 5.0   $ Holes
+2017  RCC -6.9 -4.0  -31.16 0 0    0.80 5.0   $ Holes
+C    -------------CRADLE LEGS-------------
+2020  RCC  0.0  -14.8 -31.00  0.00  7.50 17.2 0.4   $ Leg
+2021  RCC  12.8  7.4  -31.00 -6.48 -3.75 17.2 0.4   $ Leg
+2022  RCC -12.8  7.4  -31.00  6.48 -3.75 17.2 0.4   $ Leg
+C    -----------SOURCE SURFACES-----------
+9999   SPH   0 0 0 50
+C    ***********END OF SURFACES***********
+
+C    ************MATERIAL CARD************
+C    Moist air from LLNL PNS; Other materials from PNNL Materials Compendium
+C       Moist Air @ den = 1.2e-3 g/cm3
+m1      8016   -0.2403 7014  -0.7460   18000 -1.239e-2
+        6000  -1.21e-4 1001  -1.3367e-3
+mt1     lwtr.60t
+C       Al  aluminum, den = 2.7 g/cm3
+m3      13027 -1
+C 	POLYETHLENE, NON-BORATED, C2H4
+m20	 1001.80C 	0.333338	$ H
+		 6000.80C 	0.666662 	$ C
+mt20 poly.01t
+C LITHIUM-6 Flouride @ den = 2.635 g/cm3
+m22 3006 -0.267585 9000 -0.732415
+C LITHIUM-7 Flouride  @ den = 2.635 g/cm3
+m23 3007 -0.267585 9000 -0.732415
+C KAPTON POLYIMIDE FILM CASING @ den = 1.42 g/cm3
+m24 1000 -0.026362 6000 -0.691133 7000 -0.073270 8000 -0.209235
+C    ***********END OF MATERIAL***********
+C
+C    *************SOURCE CARD*************
+mode  n a p e  $ Transport neutrons
+SDEF   SUR=9999   NRM=-1   PAR=N   ERG=3.98e-06
+C    ************END OF SOURCE************
+C
+C    *************TALLY CARD**************
+C Tally cards: Need gamma/alpha/nuetron energy deposition in each detector.
+C    --------------LITHIUM 6--------------
+C X-axis
++F4006 (400)
++F4016 (401)
++F4026 (402)
++F4036 (403)
++F4046 (404)
++F4056 (405)
++F4066 (406)
++F4076 (407)
++F4086 (408)
++F4096 (409)
++F4106 (410)
++F4116 (411)
++F4126 (412)
++F4136 (413)
++F4146 (414)
++F4156 (415)
++F4166 (416)
++F4176 (417)
++F4186 (418)
+C Y-axis
++F4196 (419)
++F4206 (420)
++F4216 (421)
++F4226 (422)
++F4236 (423)
++F4246 (424)
++F4256 (425)
++F4266 (426)
++F4276 (427)
++F4286 (428)
++F4296 (429)
++F4306 (430)
++F4316 (431)
++F4326 (432)
++F4336 (433)
++F4346 (434)
++F4356 (435)
++F4366 (436)
+C Z-axis
++F4376 (437)
++F4386 (438)
++F4396 (439)
++F4406 (440)
++F4416 (441)
++F4426 (442)
++F4436 (443)
++F4446 (444)
++F4456 (445)
++F4466 (446)
++F4476 (447)
++F4486 (448)
++F4496 (449)
++F4506 (450)
++F4516 (451)
++F4526 (452)
++F4536 (453)
++F4546 (454)
+C    ************END OF TALLIES***********
+C    *************PRINT CARD**************
+dbcn  7j  1 0 0 0 0 154917 j
+C        ndp     ndm     mct ndmp dmmp  Values below ckecked by LCh
+prdmp   1.0e+09  0         1   2    0
+ctme    57600      $ 1200
+nps  1e10

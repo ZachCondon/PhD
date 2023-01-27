@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{amssymb}
 
 \begin{document}
 \begin{center}
@@ -17,9 +18,9 @@ What I need to do:
 \item Determine the source used to get that DR
 \item Get detector response matrices for the following three sources:
 \begin{itemize}
-\item Plane source
+\item[\checkmark] Plane source
 \item Point source
-\item Surrounding source
+\item[\checkmark] Surrounding source
 \end{itemize}
 I'm going to make a new script that will scrape the appropriate MCNP output files to get the detector response matrix for each example. It will be in it's own folder in my local repo and will save each DRM as its own .csv file. There will be \textbf{two} versions of each DRM. One in which the TLDs are depth averaged and the other in which they are not.
 \item Determine what the error is for the TLDs that are modeled (it will be called something like counting error)
