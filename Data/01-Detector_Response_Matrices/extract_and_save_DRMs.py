@@ -1,6 +1,41 @@
-# This script will be able to load a pickle file into an object so that I can
-#  use and visualize the data from it. I might make it so that it can load
-#  multiple pickle files each as the first layer of the object.
+# The object of this script is to take the pickle files from the scraped MCNP
+#  files and save the detector response information as .csv files.
+# Instructions for using this script:
+    # 1. Run this script (nothing will occur at this point). There is now a 
+    #     variable called "data" that will be used to extract the DRMs
+    # 2. For each detector response matrix, there are two commands:
+        # A. data.save_tallies()
+            # After running this command, you will be given a list and a 
+            #  prompt to choose a file. The file name tells you, in order,
+            #  it's for a DRM, what the source of neutrons was, the nps, and
+            #  the detector material. Choose an option based on the number
+            #  and hit enter.
+            # NOTE: It will ask multiple times, choose the same option each
+            #        time. To choose a different option, run this command
+            #        again once you are finished with the first time.
+        # B. data.save_averaged_tallies()
+            # After running this command, you will be given a list and a 
+            #  prompt to choose a file. The file name tells you, in order,
+            #  it's for a DRM, what the source of neutrons was, the nps, and
+            #  the detector material. Choose an option based on the number
+            #  and hit enter.
+            # NOTE: It will ask multiple times, choose the same option each
+            #        time. To choose a different option, run this command
+            #        again once you are finished with the first time.
+    # 3. After running these commands, there will be a meanTallies csv and an
+    #     errorTallies csv. The first row of each is the energy associated with
+    #     each detector response. To make these compatible with the MAXED code
+    #     that I have, you will need to manually add a column to the csv file.
+    #    The information to add for the averagedMeanTallies.csv and
+    #     averagedErrorTallies.csv is (this needs to be inserted as a column):
+    # [Energy (MeV)/Depth, 1cm, 2cm, 3cm, 4cm, 5cm, 6cm, 7cm, 9cm, 12cm, 15cm]^T
+    #    The information to add for the meanTallies.csv and errorTallies.csv
+    #     is (again, inserted as a column):
+    # [Energy (MeV)/Depth, 1cm, 2cm, 3cm, 4cm, 5cm, 6cm, 7cm, 9cm, 12cm, 15cm,
+    #  18cm, 21cm, 23cm, 24cm, 25cm, 26cm, 27cm, 28cm, 29cm, 1cm, 2cm, 3cm, 
+    #  4cm, 5cm, 6cm, 7cm, 9cm, 12cm, 15cm, 18cm, 21cm, 23cm, 24cm, 25cm, 26cm,
+    #  27cm, 28cm, 29cm, 1cm, 2cm, 3cm, 4cm, 5cm, 6cm, 7cm, 9cm, 12cm, 15cm, 
+    #  18cm, 21cm, 23cm, 24cm, 25cm, 26cm, 27cm, 28cm, 29cm]^T 
  
 import glob
 import pickle
@@ -9,6 +44,7 @@ import csv
 
 class allData:
     def __init__(self):
+        
         pickle_dict = {}
         pickle_files = glob.glob("*.pickle")
         for file in pickle_files:
@@ -78,8 +114,6 @@ class allData:
         for i in range(84):
             for edTLDs in range(len(self.equal_distance_TLDs)):
                 for edTLD in self.equal_distance_TLDs[edTLDs]:
-                    print(self.equal_distance_TLDs[edTLDs])
-                    input()
                     averageTallies[edTLDs,i] += self.data[dataset][self.numerical_E_bins[i]]['Mean'][edTLD]
                 averageTallies[edTLDs,i] = averageTallies[edTLDs,i]/len(self.equal_distance_TLDs[edTLDs])
         return averageTallies, dataset
@@ -122,6 +156,7 @@ class allData:
         averageErrorName = dataset + '_averagedErrorTallies.csv'
         with open(averageErrorName,'w',newline='') as f:
             write = csv.writer(f)
+            write.writerow(self.E_bins)
             write.writerows(averageErrorTallies)
     
     def save_tallies(self):

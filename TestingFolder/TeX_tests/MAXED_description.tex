@@ -23,7 +23,7 @@ What I need to do:
 \item[\checkmark] Surrounding source
 \end{itemize}
 I'm going to make a new script that will scrape the appropriate MCNP output files to get the detector response matrix for each example. It will be in it's own folder in my local repo and will save each DRM as its own .csv file. There will be \textbf{two} versions of each DRM. One in which the TLDs are depth averaged and the other in which they are not.
-\item Determine what the error is for the TLDs that are modeled (it will be called something like counting error)
+\item[\checkmark] Determine what the error is for the TLDs that are modeled (it will be called something like counting error). The error is saved in a separate matrix file. My code will need to sum up the error appropriately.
 \item Make a script that takes all of the IAEA spectra and interpolates them to the 84 energy bin structure. Save this as a .csv
 \item Run MAXED with the following examples:
 	\begin{itemize}
