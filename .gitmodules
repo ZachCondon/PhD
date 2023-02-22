@@ -1,0 +1,3 @@
+[submodule "Collaboration/McGreivy/NeutronSpectraGeneration"]
+	path = Collaboration/McGreivy/NeutronSpectraGeneration
+	url = https://github.com/JamesMcGreivy/NeutronSpectraGeneration.git
