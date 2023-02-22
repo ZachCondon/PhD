@@ -1,0 +1,30 @@
+\nobreakspace {}\hfill {{\bfseries Page}}
+\contentsline {front}{{Abstract}}{ii}{chapter*.1}%
+\contentsline {front}{{Dedication}}{iv}{section*.2}%
+\contentsline {front}{{Acknowledgments}}{v}{chapter*.3}%
+\contentsline {front}{{Vita}}{vi}{chapter*.4}%
+\contentsline {front}{{List of Tables}}{ix}{chapter*.6}%
+\contentsline {front}{List of Figures}{x}{chapter*.7}%
+\contentsline {front}{{List of Symbols}}{xi}{chapter*.8}%
+\contentsline {chapter}{\numberline {1.}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Something Basic}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Something even more basic}{1}{subsection.1.1.1}%
+\contentsline {section}{\numberline {1.2}Another Section}{1}{section.1.2}%
+\contentsline {chapter}{\numberline {2.}Neutron Spectrum Unfolding}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Radiation Interaction with Matter}{2}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Spectrum Unfolding}{2}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Detector Response Matrix}{2}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}MAXED}{2}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Description of the math of detector response unfolding}{2}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Passive Neutron Spectrometer Response}{2}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Unfolding the Detector Response}{3}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3.}This is Another Chapter}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Figures and Tables}{13}{section.3.1}%
+\contentsline {chapter}{\numberline {4.}Machine Learning/Neural Networks}{14}{chapter.4}%
+\contentsline {chapter}{\numberline {5.}Unfolding Neutron Spectra with Neural Networks}{15}{chapter.5}%
+\contentsline {chapter}{\numberline {6.}Validation of Unfolding Neutron Spectrum Using a Neural Network}{16}{chapter.6}%
+\contentsline {chapter}{\numberline {7.}Comparing Neutron Spectrum Unfolding Techniques}{17}{chapter.7}%
+\contentsline {chapter}{\numberline {8.}Unfolding the Spectrum with New Data}{18}{chapter.8}%
+\contentsline {chapter}{\numberline {9.}Conclusions}{19}{chapter.9}%
+\contentsline {part}{Appendices}{20}{appendix.A}%
+\contentsline {chapter}{\numberline {A.}This is an Appendix}{20}{section*.29}%

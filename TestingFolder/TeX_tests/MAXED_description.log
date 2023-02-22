@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.25)  2 FEB 2023 09:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.25)  3 FEB 2023 06:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -63,16 +63,16 @@ LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 9--10
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 21.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 28.
 
 (C:\Users\zacht\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 21.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
 
 
 (C:\Users\zacht\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -81,14 +81,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/zacht/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Overfull \hbox (0.95389pt too wide) in paragraph at lines 40--41
-[]\OT1/cmr/m/n/10.95 LLNL de-tec-tor re-sponse, ran-dom DRM, cor-rect spec-trum
- at 100%
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
-
+Overfull \hbox (0.95389pt too wide) in paragraph at lines 64--65
+[]\OT1/cmr/m/n/10.95 LLNL de-tec-tor re-sponse, ran-dom DRM, cor-rect spec-trum
+ at 100%
  []
 
 [3] (MAXED_description.aux) ) 
@@ -99,7 +99,7 @@ Here is how much of TeX's memory you used:
  21436 multiletter control sequences out of 15000+600000
  517584 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,5n,51p,408b,249s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 41i,5n,51p,408b,255s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\zacht\AppData\Local\MiKTeX\fonts/pk/ljf
 our/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/zacht/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/zacht/AppData/Local/Progr
@@ -108,7 +108,7 @@ cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/zacht/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/z
 acht/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.p
 fb>
-Output written on MAXED_description.pdf (3 pages, 69516 bytes).
+Output written on MAXED_description.pdf (3 pages, 71105 bytes).
 PDF statistics:
  42 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -4,55 +4,8 @@
 
 \begin{document}
 \begin{center}
-MAXED outline
+MAXED Neutron Spectrum Unfolding
 \end{center}
-*Previously described: what neutron spectrum unfolding is*\\
-
-\hfill
-
-% \break
-
-What I need to do:
-\begin{enumerate}
-\item Find LLNL real world detector response
-\item Determine the source used to get that DR
-\item Get detector response matrices for the following three sources:
-\begin{itemize}
-\item[\checkmark] Plane source
-\item Point source
-\item[\checkmark] Surrounding source
-\end{itemize}
-I'm going to make a new script that will scrape the appropriate MCNP output files to get the detector response matrix for each example. It will be in it's own folder in my local repo and will save each DRM as its own .csv file. There will be \textbf{two} versions of each DRM. One in which the TLDs are depth averaged and the other in which they are not.
-\item[\checkmark] Determine what the error is for the TLDs that are modeled (it will be called something like counting error). The error is saved in a separate matrix file. My code will need to sum up the error appropriately.
-\item Make a script that takes all of the IAEA spectra and interpolates them to the 84 energy bin structure. Save this as a .csv
-\item Run MAXED with the following examples:
-	\begin{itemize}
-	\item[\checkmark] LLNL detector response, depth-averaged DRM for planar source, guess spectrum at exact reported value of IAEA.
-	\item (ON HOLD UNTIL I GET POINT SOURCE DRM) LLNL detector response, depth-averaged DRM for point source, guess spectrum at exact reported value of IAEA.
-	\item[\checkmark] LLNL detector response, depth-averaged DRM for surrounding source, guess spectrum at exact reported value of IAEA.
-	\item[\checkmark] LLNL detector response, depth-averaged DRM for planar source, guess spectrum at 90\% reported value of IAEA.
-	\item (ON HOLD UNTIL I GET POINT SOURCE DRM) LLNL detector response, depth-averaged DRM for point source, guess spectrum at 90\% reported value of IAEA.
-	\item [\checkmark] LLNL detector response, depth-averaged DRM for surrounding source, guess spectrum at 90\% reported value of IAEA.\\
-	\textbf{Determine the best DRM to use from the above examples}
-	\item LLNL detector response, best DRM, guess spectrum at 50\% reported value from IAEA
-	\item LLNL detector response, best DRM, different spectrum at 100\% reported value from IAEA
-	\item LLNL detector response, best DRM, different spectrum at 100\% reported value from IAEA
-	\item LLNL detector response, random DRM, correct spectrum at 100\% reported value from IAEA
-	
-	\end{itemize}
-\item Make a nice script that will generate pretty graphs for everything I need for this description of MAXED.\\
-Details for this script
-	\begin{itemize}
-	\item Points to folder that contains all three DRMs (plane source, point source, surrounding source)
-	\item Points to folder containing the IAEA spectra (these spectra have already been interpolated to the 84 energy bins.
-	\item Points to folder containing the LLNL detector response
-	\item Runs each MAXED example described above.
-	\item Makes the pretty graphs for each.
-	\end{itemize}
-
-\end{enumerate}
-\break
-
 
 Introduction to MAXED
 \begin{itemize}
@@ -75,6 +28,55 @@ Quality of results
 \item The statistic measure that MAXED uses $\chi^2$
 \item Comparing the output detector response and the output spectrum
 \end{itemize}
+\break
+
+*Previously described: what neutron spectrum unfolding is*\\
+
+\hfill
+
+% \break
+
+What I need to do:
+\begin{enumerate}
+\item[\checkmark] Find LLNL real world detector response
+\item[\checkmark] Determine the source used to get that DR
+\item Get detector response matrices for the following three sources:
+\begin{itemize}
+\item[\checkmark] Plane source
+\item \textbf{On hold} Point source
+\item[\checkmark] Surrounding source
+\end{itemize}
+I'm going to make a new script that will scrape the appropriate MCNP output files to get the detector response matrix for each example. It will be in it's own folder in my local repo and will save each DRM as its own .csv file. There will be \textbf{two} versions of each DRM. One in which the TLDs are depth averaged and the other in which they are not.
+\item[\checkmark] Determine what the error is for the TLDs that are modeled (it will be called something like counting error). The error is saved in a separate matrix file. My code will need to sum up the error appropriately.
+\item[\checkmark] Make a script that takes all of the IAEA spectra and interpolates them to the 84 energy bin structure. Save this as a .csv
+\item Run MAXED with the following examples:
+	\begin{itemize}
+	\item[\checkmark] CASE 1: LLNL detector response, depth-averaged DRM for planar source, guess spectrum at exact reported value of IAEA.
+	\item (ON HOLD UNTIL I GET POINT SOURCE DRM) LLNL detector response, depth-averaged DRM for point source, guess spectrum at exact reported value of IAEA.
+	\item[\checkmark] CASE 2: LLNL detector response, depth-averaged DRM for surrounding source, guess spectrum at exact reported value of IAEA.
+	\item[\checkmark] CASE 3: LLNL detector response, depth-averaged DRM for planar source, guess spectrum at 90\% reported value of IAEA.
+	\item (ON HOLD UNTIL I GET POINT SOURCE DRM) LLNL detector response, depth-averaged DRM for point source, guess spectrum at 90\% reported value of IAEA.
+	\item [\checkmark] CASE 4: LLNL detector response, depth-averaged DRM for surrounding source, guess spectrum at 90\% reported value of IAEA.\\
+	\textbf{The Planar Source, Depth Averaged DRM is the best one, although they all are very good.}
+	\item[\checkmark] CASE 5: LLNL detector response, best DRM, guess spectrum at 50\% reported value from IAEA
+	\item[\checkmark] CASE 6: LLNL detector response, best DRM, D2O moderated Cf Spectrum at 100\% reported value from IAEA
+	\item[\checkmark] CASE 7: LLNL detector response, best DRM, H2O moderated PuBe at 100\% reported value from IAEA
+	\item[\checkmark] LLNL detector response, random DRM, correct spectrum at 100\% reported value from IAEA
+	
+	\end{itemize}
+\item[\checkmark] Make a nice script that will generate pretty graphs for everything I need for this description of MAXED.\\
+Details for this script
+	\begin{itemize}
+	\item Points to folder that contains all three DRMs (plane source, point source, surrounding source)
+	\item Points to folder containing the IAEA spectra (these spectra have already been interpolated to the 84 energy bins.
+	\item Points to folder containing the LLNL detector response
+	\item Runs each MAXED example described above.
+	\item Makes the pretty graphs for each.
+	\end{itemize}
+
+\end{enumerate}
+\break
+
    
    
 \end{document}

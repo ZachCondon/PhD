@@ -1,0 +1,17 @@
+\section{Input Normalization}\label{Input_Normalization}
+
+\begin{itemize}
+\item The benefit of normalizing input data is that it will drastically reduce calculation time and it is very important to get good results. The data used in this paper has varying units and a vast range of values (ranging for multiple orders of magnitude). Large values used in neural networks use up much more storage space and significantly slow down computations. They used different normalization techniques (which were sometimes just a linear transformation rather than a normalization) to test the effects on the learning process. \ref{Input_Normalization}
+\item Normalization is critical to getting the data in a readable and easily interpreted format. Without normalization, the network-based model may not be able to find a positive correlations between the variables. Almost all data in scientific studies will have been normalized before it is used. The normalization of the data scales it to the same range, which reduces analysis time and minimizes the bias in the ANN. This paper focuses on four normalization methods \ref{Norm_In_Sample_Size}
+\begin{itemize}
+\item Z-score Method (which is actually the same method that SciKit calls StandardScaler): $x=\frac{x-\mu}{\sigma}$
+\item Min-Max Method (SciKit\_MinMaxScaler): $x = \frac{x_i-x_{min}}{x_{max}-x_{min}}$
+\item Median Method: $x = \frac{x_i}{Median} $
+\item Adjusted Min-Max Method $x = 0.8*\frac{x_i-x_{min}}{x_{max}-x_{min}} + 0.1$
+\end{itemize}
+The concluded that the adjusted Min-Max Method was the best for their dataset, but they do not make any claims about it being better in general.
+
+\end{itemize}
+
+\section{jude}
+

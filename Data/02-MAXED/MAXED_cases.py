@@ -45,21 +45,17 @@ def run_case(gs, sm, drm, dr, dre, ts, mi, which_drm, which_spec, im_num, fig_na
     params = (gs*sm, drm, dr*.1, dr)
     m = len(dr) # number of detectors in the detector response.
     bounds = list(zip([-10]*m, [10]*m))
-    best_chi = 1e6
     res = dual_annealing(Z, bounds, args=params, maxiter=mi)  # minimize Z
     unfolded_spec = unfold_Spectrum(gs, res.x, drm)   # unfold Z with lambdas (res.x)
     print(f't-test of spectrum: stat={ttest_ind(unfolded_spec,gs)[0]}, p={ttest_ind(unfolded_spec,gs)[1]}')
     det_res_unfolded = drm.dot(unfolded_spec)
-    chi2 = (det_res_unfolded-dr).T.dot(np.linalg.inv(np.diag(dr*.1))).dot(det_res_unfolded-dr)
-    if chi2 < best_chi:
-        best_chi = chi2
-        best_unfolded_spec = unfolded_spec
-        best_det_res_unfolded = det_res_unfolded
-        best_res = res
-        # print(f'The current best chi is: {best_chi} at iteration: {i}')
+    chi2_dr = (det_res_unfolded-dr).T.dot(np.linalg.inv(np.diag(dr*.1))).dot(det_res_unfolded-dr)
+    MAC = np.dot(unfolded_spec,ts)**2/(np.dot(unfolded_spec,unfolded_spec)*np.dot(ts,ts))
+    # chi2_spec = (unfolded_spec-ts).T.dot(np.linalg.inv(np.diag((ts+1e5)*.1))).dot(unfolded_spec-ts)
 
-    unfolded_spec = best_unfolded_spec
-    print(f'The best results led to: chi2 = {best_chi}, chi2 per DOF = {best_chi/m}')
+    print('The best results led to:')
+    print(f'       For the Detector Response: chi2 = {chi2_dr}, chi2 per DOF = {chi2_dr/m}')
+    print(f'       For the Spectrum: MAC = {MAC}')
     fig,(ax0,ax1) = plt.subplots(1,2)
     fig.suptitle('MAXED Unfolding Spectra Results\n' + f'DRM: {which_drm}\n' + f'Guess Spectrum: {which_spec}*{sm}')
     
@@ -71,8 +67,9 @@ def run_case(gs, sm, drm, dr, dre, ts, mi, which_drm, which_spec, im_num, fig_na
     ax0.set_xlabel('Energy (MeV)')
     ax0.set_ylim((0,1))
     ax0.legend(loc='upper left', fontsize=8)
-    ax0.text(1e-9,.2,f'$\chi^2$ = {round(chi2,2)}')
-    ax0.text(1e-9,.1,f't={round(ttest_ind(unfolded_spec,gs)[0],2)}',fontweight='normal')
+    # ax0.text(1e-9,.2,f'$\chi^2$ = {round(chi2_dr,2)}')
+    ax0.text(1e-9,.2,f'MAC = {round(MAC,5)}')
+    # ax0.text(1e-9,.1,f't={round(ttest_ind(unfolded_spec,gs)[0],2)}',fontweight='normal')
     ax0.set_title('Spectrum Comparison')
     
     # radii = [14, 13, 12, 11, 10, 9, 8, 6, 3, 0]
@@ -89,7 +86,8 @@ def run_case(gs, sm, drm, dr, dre, ts, mi, which_drm, which_spec, im_num, fig_na
     ax1.set_xlabel('PNS depth (cm)')
     ax1.set_ylim((0.01,0.2))
     ax1.legend(loc='upper left', fontsize=8)
-    ax1.text(6,.1,f't={round(ttest_ind(best_det_res_unfolded,dr)[0],2)}',fontweight='normal')
+    ax1.text(8,.15,f'$\chi^2$ = {round(chi2_dr,2)}')
+    # ax1.text(6,.1,f't={round(ttest_ind(det_res_unfolded,dr)[0],2)}',fontweight='normal')
     ax1.set_title('Detector Response Comparison')
 
     fig.tight_layout()
@@ -174,142 +172,180 @@ dr_LLNL_run1_avg = dr_LLNL_run1_avg/sum(dr_LLNL_run1_avg)
 # dr_LLNL_run1 = dr_LLNL_run1/np.linalg.norm(dr_LLNL_run1)
 dr_LLNL_run1 = dr_LLNL_run1/sum(dr_LLNL_run1)
 
-# # AWE detector response:
-# AWE_dr_df= pd.read_csv(r'C:\Users\zacht\OneDrive\OSU\Research\MyMaxed\CaseStudy\AWE_det_res_info.csv')
-# AWE_dr = AWE_dr_df.to_numpy()[:,1]
-# AWE_norm = np.linalg.norm(AWE_dr)
-# AWE_dr = AWE_dr/AWE_norm
-# AWE_dr_error = AWE_dr_df.to_numpy()[:,2]
-# AWE_dr_error = AWE_dr_error/AWE_norm
+# ###-------------------------------------------------------------------------###
+# #                        Save a figure for the detector response only       ###
+# ###-------------------------------------------------------------------------###
+# fig,ax = plt.subplots()
+# radii = [0,3,6,7,8,10,11,12,13,14]
+# ax.scatter(radii, dr_LLNL_run1_avg, s=10, color='#ff7f0e')
+# ax.errorbar(radii, dr_LLNL_run1_avg, yerr=0.1*dr_LLNL_run1_avg, capsize=5, linestyle=None, color='#ff7f0e')
+# ax.set_ylabel('Fluence Response (normalized)')
+# ax.set_xlabel('TLD depth (cm)')
+# ax.set_ylim((0.01, 0.2))
+# ax.set_title('PNS Detector Response')
+# fig.tight_layout()
+# fig_name = 'Example_PNS_dr.png'
+# fig.savefig(fig_name,dpi=300)
 
-# # Flat guess spectrum:
-# flat_spec = np.ones(84)
-
-###-------------------------------------------------------------------------###
-#                       Case 1                                                #
-#                       DRM: Planar Source, depth averaged                    #
-#                       Detector Response: LLNL                               #
-#                       Guess Spectrum: IAEA Cf-252                           #
-###-------------------------------------------------------------------------###
-spec_mod = 1
-maxiter = 1000 # for the maximum iterations that dual_annealing will allow
-which_drm = 'Planar_Source_DRM_avg_GSmod100percent'
-which_spec = 'IAEA Cf-252 Spectrum'
-fig_names = []
-print('Case 1: Planar source, depth averaged')
-for i in range(1):
-    run_case(Cf_spec,spec_mod,plane_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
-make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_planeDRMavg_gs100percent_LLNLrun1.gif',fig_names)
-
-###-------------------------------------------------------------------------###
-#                       Case 2                                                #
-#                       DRM: Spheric Source, depth averaged                   #
-#                       Detector Response: LLNL                               #
-#                       Guess Spectrum: IAEA Cf-252                           #
-###-------------------------------------------------------------------------###
-spec_mod = 1
-maxiter = 1000 # for the maximum iterations that dual_annealing will allow
-which_drm = 'Spherical_Source_DRM_avg_GSmod100percent'
-which_spec = 'IAEA Cf-252 Spectrum'
-fig_names = []
-print('Case 2: Spherical Source, depth averaged')
-for i in range(1):
-    run_case(Cf_spec,spec_mod,spheric_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
-make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_sphericDRMavg_gs100percent_LLNLrun1.gif',fig_names)
-
-###-------------------------------------------------------------------------###
-#                       Case 3                                                #
-#                       DRM: Planar Source, depth averaged                    #
-#                       Detector Response: LLNL                               #
-#                       Guess Spectrum: IAEA Cf-252 at 90%                    #
-###-------------------------------------------------------------------------###
-spec_mod = 0.9
-maxiter = 1000 # for the maximum iterations that dual_annealing will allow
-which_drm = 'Planar_Source_DRM_avg_GSmod90percent'
-which_spec = 'IAEA Cf-252 Spectrum'
-fig_names = []
-print('Case 3: Planar source, depth averaged, guess spectrum at 90%')
-for i in range(1):
-    run_case(Cf_spec,spec_mod,plane_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
-make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_planeDRMavg_gs90percent_LLNLrun1.gif',fig_names)
-
-
-###-------------------------------------------------------------------------###
-#                       Case 4                                                #
-#                       DRM: Spheric Source, depth averaged                   #
-#                       Detector Response: LLNL                               #
-#                       Guess Spectrum: IAEA Cf-252 at 90%                    #
-###-------------------------------------------------------------------------###
-spec_mod = 0.9
-maxiter = 1000 # for the maximum iterations that dual_annealing will allow
-which_drm = 'Spherical_Source_DRM_avg_GSmod90percent'
-which_spec = 'IAEA Cf-252 Spectrum'
-fig_names = []
-print('Case 4: Spheric source, depth averaged, guess spectrum at 90%')
-for i in range(1):
-    run_case(Cf_spec,spec_mod,spheric_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
-make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_sphericDRMavg_gs90percent_LLNLrun1.gif',fig_names)
-
-###-------------------------------------------------------------------------###
-#                       Case 5                                                #
-#                       DRM: Planar Source, depth averaged                    #
-#                       Detector Response: LLNL                               #
-#                       Guess Spectrum: IAEA Cf-252 at 50%                    #
-###-------------------------------------------------------------------------###
-spec_mod = 0.5
-maxiter = 1000 # for the maximum iterations that dual_annealing will allow
-which_drm = 'Planar_Source_DRM_avg_GSmod50percent'
-which_spec = 'IAEA Cf-252 Spectrum'
-fig_names = []
-print('Case 5: Planar source, depth averaged, guess spectrum at 50%')
-for i in range(1):
-    run_case(Cf_spec,spec_mod,plane_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
-make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_planeDRMavg_gs50percent_LLNLrun1.gif',fig_names)
-
-###-------------------------------------------------------------------------###
-#                       Case 6                                                #
-#                       DRM: Planar Source, depth averaged                    #
-#                       Detector Response: LLNL                               #
-#                       Guess Spectrum: IAEA D2O mod Cf at 100%               #
-###-------------------------------------------------------------------------###
-spec_mod = 1
-maxiter = 1000 # for the maximum iterations that dual_annealing will allow
-which_drm = 'Planar_Source_DRM_avg_GSmod100percent'
-which_spec = 'IAEA D2O Moderated Cf Spectrum'
-fig_names = []
-print('Case 6: Planar source, depth averaged, D2O Moderated Cf guess spectrum at 100%')
-for i in range(1):
-    run_case(D2O_mod_Cf_spec,spec_mod,plane_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
-make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_planeDRMavg_D2O-mod-Cf_gs100percent_LLNLrun1.gif',fig_names)
-
-###-------------------------------------------------------------------------###
-#                       Case 7                                                #
-#                       DRM: Planar Source, depth averaged                    #
-#                       Detector Response: LLNL                               #
-#                       Guess Spectrum: IAEA AmB at 100%                      #
-###-------------------------------------------------------------------------###
-spec_mod = 1
-maxiter = 1000 # for the maximum iterations that dual_annealing will allow
-which_drm = 'Planar_Source_DRM_avg_GSmod100percent'
-which_spec = 'IAEA H2O Moderated PuBe Spectrum'
-fig_names = []
-print('Case 7: Planar source, depth averaged, H2O Moderated PuBe guess spectrum at 100%')
-for i in range(1):
-    run_case(H2O_mod_PuBe_spec,spec_mod,plane_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
-make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_planeDRMavg_H2O-mod-PuBe_gs100percent_LLNLrun1.gif',fig_names)
+# ###-------------------------------------------------------------------------###
+# #                       Case 1                                                #
+# #                       DRM: Planar Source, depth averaged                    #
+# #                       Detector Response: LLNL                               #
+# #                       Guess Spectrum: IAEA Cf-252                           #
+# ###-------------------------------------------------------------------------###
+# spec_mod = 1
+# maxiter = 1000 # for the maximum iterations that dual_annealing will allow
+# which_drm = 'Planar_Source_DRM_avg_GSmod100percent'
+# which_spec = 'IAEA Cf-252 Spectrum'
+# fig_names = []
+# print('Case 1: Planar source, depth averaged')
+# for i in range(1):
+#     run_case(Cf_spec,spec_mod,plane_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
+# make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_planeDRMavg_gs100percent_LLNLrun1.gif',fig_names)
 
 # ###-------------------------------------------------------------------------###
 # #                       Case 2                                                #
-# #                       DRM: AWE                                              #
-# #                       Detector Response: AWE                                #
-# #                       Guess Spectrum: flat spectrum                         #
+# #                       DRM: Spheric Source, depth averaged                   #
+# #                       Detector Response: LLNL                               #
+# #                       Guess Spectrum: IAEA Cf-252                           #
+# ###-------------------------------------------------------------------------###
+# spec_mod = 1
+# maxiter = 1000 # for the maximum iterations that dual_annealing will allow
+# which_drm = 'Spherical_Source_DRM_avg_GSmod100percent'
+# which_spec = 'IAEA Cf-252 Spectrum'
+# fig_names = []
+# print('Case 2: Spherical Source, depth averaged')
+# for i in range(1):
+#     run_case(Cf_spec,spec_mod,spheric_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
+# make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_sphericDRMavg_gs100percent_LLNLrun1.gif',fig_names)
+
+# ###-------------------------------------------------------------------------###
+# #                       Case 3                                                #
+# #                       DRM: Planar Source, depth averaged                    #
+# #                       Detector Response: LLNL                               #
+# #                       Guess Spectrum: IAEA Cf-252 at 90%                    #
+# ###-------------------------------------------------------------------------###
+# spec_mod = 0.9
+# maxiter = 1000 # for the maximum iterations that dual_annealing will allow
+# which_drm = 'Planar_Source_DRM_avg_GSmod90percent'
+# which_spec = 'IAEA Cf-252 Spectrum'
+# fig_names = []
+# print('Case 3: Planar source, depth averaged, guess spectrum at 90%')
+# for i in range(1):
+#     run_case(Cf_spec,spec_mod,plane_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
+# make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_planeDRMavg_gs90percent_LLNLrun1.gif',fig_names)
+
+
+# ###-------------------------------------------------------------------------###
+# #                       Case 4                                                #
+# #                       DRM: Spheric Source, depth averaged                   #
+# #                       Detector Response: LLNL                               #
+# #                       Guess Spectrum: IAEA Cf-252 at 90%                    #
+# ###-------------------------------------------------------------------------###
+# spec_mod = 0.9
+# maxiter = 1000 # for the maximum iterations that dual_annealing will allow
+# which_drm = 'Spherical_Source_DRM_avg_GSmod90percent'
+# which_spec = 'IAEA Cf-252 Spectrum'
+# fig_names = []
+# print('Case 4: Spheric source, depth averaged, guess spectrum at 90%')
+# for i in range(1):
+#     run_case(Cf_spec,spec_mod,spheric_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
+# make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_sphericDRMavg_gs90percent_LLNLrun1.gif',fig_names)
+
+# ###-------------------------------------------------------------------------###
+# #                       Case 5                                                #
+# #                       DRM: Planar Source, depth averaged                    #
+# #                       Detector Response: LLNL                               #
+# #                       Guess Spectrum: IAEA Cf-252 at 50%                    #
 # ###-------------------------------------------------------------------------###
 # spec_mod = 0.5
 # maxiter = 1000 # for the maximum iterations that dual_annealing will allow
-# which_drm = 'Planar_Source_DRM'
+# which_drm = 'Planar_Source_DRM_avg_GSmod50percent'
 # which_spec = 'IAEA Cf-252 Spectrum'
 # fig_names = []
-# print('Case 2:')
+# print('Case 5: Planar source, depth averaged, guess spectrum at 50%')
 # for i in range(1):
-#     run_case(Cf_spec,spec_mod,plane_drm,dr_LLNL_run1,0.1*dr_LLNL_run1,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
-# make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_planeDRM_LLNLrun1.gif',fig_names)
+#     run_case(Cf_spec,spec_mod,plane_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
+# make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_planeDRMavg_gs50percent_LLNLrun1.gif',fig_names)
+
+# ###-------------------------------------------------------------------------###
+# #                       Case 6                                                #
+# #                       DRM: Planar Source, depth averaged                    #
+# #                       Detector Response: LLNL                               #
+# #                       Guess Spectrum: IAEA D2O mod Cf at 100%               #
+# ###-------------------------------------------------------------------------###
+# spec_mod = 1
+# maxiter = 1000 # for the maximum iterations that dual_annealing will allow
+# which_drm = 'Planar_Source_DRM_avg_GSmod100percent'
+# which_spec = 'IAEA D2O Moderated Cf Spectrum'
+# fig_names = []
+# print('Case 6: Planar source, depth averaged, D2O Moderated Cf guess spectrum at 100%')
+# for i in range(1):
+#     run_case(D2O_mod_Cf_spec,spec_mod,plane_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
+# make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_planeDRMavg_D2O-mod-Cf_gs100percent_LLNLrun1.gif',fig_names)
+
+# ###-------------------------------------------------------------------------###
+# #                       Case 7                                                #
+# #                       DRM: Planar Source, depth averaged                    #
+# #                       Detector Response: LLNL                               #
+# #                       Guess Spectrum: IAEA H2O mod PuBe at 100%             #
+# ###-------------------------------------------------------------------------###
+# spec_mod = 1
+# maxiter = 1000 # for the maximum iterations that dual_annealing will allow
+# which_drm = 'Planar_Source_DRM_avg_GSmod100percent'
+# which_spec = 'IAEA H2O Moderated PuBe Spectrum'
+# fig_names = []
+# print('Case 7: Planar source, depth averaged, H2O Moderated PuBe guess spectrum at 100%')
+# for i in range(1):
+#     run_case(H2O_mod_PuBe_spec,spec_mod,plane_avg_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
+# make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_planeDRMavg_H2O-mod-PuBe_gs100percent_LLNLrun1.gif',fig_names)
+
+# ###-------------------------------------------------------------------------###
+# #                       Case 8                                                #
+# #                       DRM: Random DRM                                       #
+# #                       Detector Response: LLNL                               #
+# #                       Guess Spectrum: Cf Spectrum at 100%                   #
+# ###-------------------------------------------------------------------------###
+# spec_mod = 1
+# maxiter = 1000 # for the maximum iterations that dual_annealing will allow
+# which_drm = 'Random_DRM_avg_GSmod100percent'
+# which_spec = 'IAEA Cf-252 Spectrum'
+# fig_names = []
+# print('Case 8: Random DRM, Cf-252 guess spectrum at 100%')
+# for i in range(1):
+#     run_case(Cf_spec,spec_mod,random_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
+# make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_randomDRMavg_Cf-252_gs100percent_LLNLrun1.gif',fig_names)
+
+# ###-------------------------------------------------------------------------###
+# #                       Case 9                                                #
+# #                       DRM: Random DRM                                       #
+# #                       Detector Response: LLNL                               #
+# #                       Guess Spectrum: Cf Spectrum at 50%                    #
+# ###-------------------------------------------------------------------------###
+# spec_mod = 0.5
+# maxiter = 1000 # for the maximum iterations that dual_annealing will allow
+# which_drm = 'Random_DRM_avg_GSmod50percent'
+# which_spec = 'IAEA Cf-252 Spectrum'
+# fig_names = []
+# print('Case 9: Random DRM, Cf-252 guess spectrum at 100%')
+# for i in range(1):
+#     run_case(Cf_spec,spec_mod,random_drm,dr_LLNL_run1_avg,0.1*dr_LLNL_run1_avg,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
+# make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_randomDRMavg_Cf-252_gs50percent_LLNLrun1.gif',fig_names)
+
+###-------------------------------------------------------------------------###
+# This section will use the IAEA Cf-252 spectrum with the DRM to calculate a 
+#  detector response. This response will be compared with the response from
+#  LLNL and will be used in MAXED
+###-------------------------------------------------------------------------###
+dr_calc = np.dot(Cf_spec,plane_avg_drm.T)
+spec_mod = 0.5
+maxiter = 1000
+which_drm = 'CalcDR_Planar_Source_DRM_avg_GSmod100percent'
+which_spec = 'IAEA Cf-252 Spectrum'
+fig_names = []
+print('Case 10: Planar source, depth averaged')
+print(plane_avg_drm.shape)
+print(dr_calc.shape)
+for i in range(1):
+    run_case(Cf_spec,spec_mod,plane_avg_drm,dr_calc,0.1*dr_calc,Cf_spec,maxiter,which_drm,which_spec,i,fig_names)
+make_gif(r'C:\Users\zacht\OneDrive\PhD\Data\02-MAXED\gif_drCalc_planeDRMavg_gs100percent_LLNLrun1.gif',fig_names)
