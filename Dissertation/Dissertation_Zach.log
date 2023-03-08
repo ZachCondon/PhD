@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.25)  17 FEB 2023 15:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.25)  8 MAR 2023 12:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1615,36 +1615,105 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 ] (texfiles/symbols.tex) [11
 
 ]
-(texfiles/introduction.tex
+(texfiles/chapter1.tex
 Chapter 1.
-) [1
+(texfiles/sec_background_and_motivation.tex
 
-] (texfiles/chapter2.tex
-Chapter 2.
-(texfiles/sec_radiation_interaction.tex) (texfiles/sec_spectrum_unfolding.tex)
-(texfiles/sec_maxed.tex [2
+LaTeX Warning: Citation 'doe-std-1098' on page 1 undefined on input line 2.
+
+
+LaTeX Warning: Citation 'compendium_of_neutron_spectra' on page 1 undefined on 
+input line 2.
+
+
+LaTeX Warning: Citation 'poole_1952' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation 'habiger_1966' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation 'wu_guung_pei_yang_hwang_thomas_1999' on page 1 undefin
+ed on input line 4.
+
+
+LaTeX Warning: Citation 'dietz_matzke_sosaat_urbach_weyrauch_1993' on page 1 un
+defined on input line 4.
+
+
+LaTeX Warning: Citation 'colonna_tagliente_1998' on page 1 undefined on input l
+ine 4.
+
+
+LaTeX Warning: Citation 'kuijpers_herzing_cloth_filges_hecker_1977' on page 1 u
+ndefined on input line 4.
+
+
+LaTeX Warning: Citation 'bramblett_ewing_bonner_1960' on page 1 undefined on in
+put line 4.
+
+
+Overfull \hbox (18.23749pt too wide) in paragraph at lines 4--5
+\T1/ptm/m/n/12 (-20) [[]], thresh-old meth-ods [[]],
+ []
+
+[1
 
 ]
-<images/Example_PNS_dr.png, id=239, 433.62pt x 289.08pt>
+
+LaTeX Warning: Citation 'johnson_cember_2017' on page 2 undefined on input line
+ 6.
+
+
+LaTeX Warning: Citation 'johnson_cember_2017' on page 2 undefined on input line
+ 6.
+
+
+LaTeX Warning: Citation 'johnson_cember_2017' on page 2 undefined on input line
+ 8.
+
+)) [2] (texfiles/chapter2.tex
+Chapter 2.
+(texfiles/sec_radiation_interaction.tex
+
+LaTeX Warning: Citation 'lamarsh_baratta_2018' on page 3 undefined on input lin
+e 2.
+
+
+LaTeX Warning: Citation 'lamarsh_baratta_2018' on page 3 undefined on input lin
+e 4.
+
+
+LaTeX Warning: Citation 'lamarsh_baratta_2018' on page 3 undefined on input lin
+e 4.
+
+[3
+
+]
+
+LaTeX Warning: Citation 'lamarsh_baratta_2018' on page 4 undefined on input lin
+e 8.
+
+) (texfiles/sec_spectrum_unfolding.tex) (texfiles/sec_maxed.tex
+<images/Example_PNS_dr.png, id=240, 433.62pt x 289.08pt>
 File: images/Example_PNS_dr.png Graphic file (type png)
 <use images/Example_PNS_dr.png>
 Package pdftex.def Info: images/Example_PNS_dr.png  used on input line 14.
 (pdftex.def)             Requested size: 390.2544pt x 260.16959pt.
- [3 <./images/Example_PNS_dr.png>]
+ [4] [5 <./images/Example_PNS_dr.png>]
 
-LaTeX Warning: Citation 'iaea_spec' on page 4 undefined on input line 30.
+LaTeX Warning: Citation 'iaea_spec' on page 6 undefined on input line 30.
 
 <images/Planar_Source_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.png, id=25
-0, 433.62pt x 289.08pt>
+5, 433.62pt x 289.08pt>
 File: images/Planar_Source_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.png G
 raphic file (type png)
 <use images/Planar_Source_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.png>
 Package pdftex.def Info: images/Planar_Source_DRM_avg_GSmod100percent_IAEA Cf-2
 52 Spectrum_0.png  used on input line 38.
 (pdftex.def)             Requested size: 346.89647pt x 231.2643pt.
-[4]
+[6]
 <images/Spherical_Source_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.png, id
-=261, 433.62pt x 289.08pt>
+=265, 433.62pt x 289.08pt>
 File: images/Spherical_Source_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.pn
 g Graphic file (type png)
 <use images/Spherical_Source_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.png
@@ -1652,9 +1721,7 @@ g Graphic file (type png)
 Package pdftex.def Info: images/Spherical_Source_DRM_avg_GSmod100percent_IAEA C
 f-252 Spectrum_0.png  used on input line 51.
 (pdftex.def)             Requested size: 346.89647pt x 231.2643pt.
- [5 <./images/Planar_Source_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.png>
-]
-<images/Planar_Source_DRM_avg_GSmod90percent_IAEA Cf-252 Spectrum_0.png, id=270
+<images/Planar_Source_DRM_avg_GSmod90percent_IAEA Cf-252 Spectrum_0.png, id=267
 , 433.62pt x 289.08pt>
 File: images/Planar_Source_DRM_avg_GSmod90percent_IAEA Cf-252 Spectrum_0.png Gr
 aphic file (type png)
@@ -1662,7 +1729,9 @@ aphic file (type png)
 Package pdftex.def Info: images/Planar_Source_DRM_avg_GSmod90percent_IAEA Cf-25
 2 Spectrum_0.png  used on input line 64.
 (pdftex.def)             Requested size: 346.89647pt x 231.2643pt.
-<images/Planar_Source_DRM_avg_GSmod50percent_IAEA Cf-252 Spectrum_0.png, id=272
+ [7 <./images/Planar_Source_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.png>
+]
+<images/Planar_Source_DRM_avg_GSmod50percent_IAEA Cf-252 Spectrum_0.png, id=276
 , 433.62pt x 289.08pt>
 File: images/Planar_Source_DRM_avg_GSmod50percent_IAEA Cf-252 Spectrum_0.png Gr
 aphic file (type png)
@@ -1670,10 +1739,10 @@ aphic file (type png)
 Package pdftex.def Info: images/Planar_Source_DRM_avg_GSmod50percent_IAEA Cf-25
 2 Spectrum_0.png  used on input line 77.
 (pdftex.def)             Requested size: 346.89647pt x 231.2643pt.
- [6 <./images/Spherical_Source_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.p
+ [8 <./images/Spherical_Source_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.p
 ng>]
 <images/Planar_Source_DRM_avg_GSmod100percent_IAEA D2O Moderated Cf Spectrum_0.
-png, id=280, 433.62pt x 289.08pt>
+png, id=285, 433.62pt x 289.08pt>
 File: images/Planar_Source_DRM_avg_GSmod100percent_IAEA D2O Moderated Cf Spectr
 um_0.png Graphic file (type png)
 <use images/Planar_Source_DRM_avg_GSmod100percent_IAEA D2O Moderated Cf Spectru
@@ -1682,7 +1751,7 @@ Package pdftex.def Info: images/Planar_Source_DRM_avg_GSmod100percent_IAEA D2O
 Moderated Cf Spectrum_0.png  used on input line 90.
 (pdftex.def)             Requested size: 346.89647pt x 231.2643pt.
 <images/Planar_Source_DRM_avg_GSmod100percent_IAEA H2O Moderated PuBe Spectrum_
-0.png, id=282, 433.62pt x 289.08pt>
+0.png, id=287, 433.62pt x 289.08pt>
 File: images/Planar_Source_DRM_avg_GSmod100percent_IAEA H2O Moderated PuBe Spec
 trum_0.png Graphic file (type png)
 <use images/Planar_Source_DRM_avg_GSmod100percent_IAEA H2O Moderated PuBe Spect
@@ -1690,8 +1759,8 @@ rum_0.png>
 Package pdftex.def Info: images/Planar_Source_DRM_avg_GSmod100percent_IAEA H2O 
 Moderated PuBe Spectrum_0.png  used on input line 103.
 (pdftex.def)             Requested size: 346.89647pt x 231.2643pt.
- [7 <./images/Planar_Source_DRM_avg_GSmod90percent_IAEA Cf-252 Spectrum_0.png>]
-<images/Random_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.png, id=292, 433.
+ [9 <./images/Planar_Source_DRM_avg_GSmod90percent_IAEA Cf-252 Spectrum_0.png>]
+<images/Random_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.png, id=296, 433.
 62pt x 289.08pt>
 File: images/Random_DRM_avg_GSmod100percent_IAEA Cf-252 Spectrum_0.png Graphic 
 file (type png)
@@ -1699,8 +1768,7 @@ file (type png)
 Package pdftex.def Info: images/Random_DRM_avg_GSmod100percent_IAEA Cf-252 Spec
 trum_0.png  used on input line 116.
 (pdftex.def)             Requested size: 346.89647pt x 231.2643pt.
- [8 <./images/Planar_Source_DRM_avg_GSmod50percent_IAEA Cf-252 Spectrum_0.png>]
-<images/Random_DRM_avg_GSmod50percent_IAEA Cf-252 Spectrum_0.png, id=301, 433.6
+<images/Random_DRM_avg_GSmod50percent_IAEA Cf-252 Spectrum_0.png, id=298, 433.6
 2pt x 289.08pt>
 File: images/Random_DRM_avg_GSmod50percent_IAEA Cf-252 Spectrum_0.png Graphic f
 ile (type png)
@@ -1708,74 +1776,75 @@ ile (type png)
 Package pdftex.def Info: images/Random_DRM_avg_GSmod50percent_IAEA Cf-252 Spect
 rum_0.png  used on input line 129.
 (pdftex.def)             Requested size: 346.89647pt x 231.2643pt.
-)) [9 <./images/Planar_Source_DRM_avg_GSmod100percent_IAEA D2O Moderated Cf Spe
-ctrum_0.png>] [10 <./images/Planar_Source_DRM_avg_GSmod100percent_IAEA H2O Mode
-rated PuBe Spectrum_0.png>] (texfiles/chapter3.tex [11 <./images/Random_DRM_avg
-_GSmod100percent_IAEA Cf-252 Spectrum_0.png> <./images/Random_DRM_avg_GSmod50pe
-rcent_IAEA Cf-252 Spectrum_0.png>]
+ [10 <./images/Planar_Source_DRM_avg_GSmod50percent_IAEA Cf-252 Spectrum_0.png>
+])) [11 <./images/Planar_Source_DRM_avg_GSmod100percent_IAEA D2O Moderated Cf S
+pectrum_0.png>] (texfiles/chapter3.tex [12 <./images/Planar_Source_DRM_avg_GSmo
+d100percent_IAEA H2O Moderated PuBe Spectrum_0.png> <./images/Random_DRM_avg_GS
+mod100percent_IAEA Cf-252 Spectrum_0.png>] [13 <./images/Random_DRM_avg_GSmod50
+percent_IAEA Cf-252 Spectrum_0.png>]
 Chapter 3.
 (texfiles/sec_input_normalization.tex
 
-LaTeX Warning: Reference `Norm_In_Sample_Size' on page 12 undefined on input li
+LaTeX Warning: Reference `Norm_In_Sample_Size' on page 14 undefined on input li
 ne 5.
 
-[12
+[14
 
-])) [13] (texfiles/chapter4.tex
+])) [15] (texfiles/chapter4.tex
 Chapter 4.
-) [14
+) [16
 
 ] (texfiles/chapter5.tex
 Chapter 5.
-) [15
+) [17
 
 ] (texfiles/chapter6.tex
 Chapter 6.
-) [16
+) [18
 
 ] (texfiles/chapter7.tex
 Chapter 7.
-) [17
+) [19
 
 ] (texfiles/conclusions.tex
 Chapter 8.
 
-LaTeX Warning: Citation 'proc1' on page 18 undefined on input line 13.
+LaTeX Warning: Citation 'proc1' on page 20 undefined on input line 13.
 
 
-LaTeX Warning: Citation 'proc2' on page 18 undefined on input line 13.
+LaTeX Warning: Citation 'proc2' on page 20 undefined on input line 13.
 
 
-LaTeX Warning: Citation 'proc3' on page 18 undefined on input line 13.
+LaTeX Warning: Citation 'proc3' on page 20 undefined on input line 13.
 
 
-LaTeX Warning: Citation 'artic1' on page 18 undefined on input line 16.
+LaTeX Warning: Citation 'artic1' on page 20 undefined on input line 16.
 
 
-LaTeX Warning: Citation 'artic2' on page 18 undefined on input line 16.
+LaTeX Warning: Citation 'artic2' on page 20 undefined on input line 16.
 
 
-LaTeX Warning: Citation 'artic3' on page 18 undefined on input line 16.
+LaTeX Warning: Citation 'artic3' on page 20 undefined on input line 16.
 
 
-LaTeX Warning: Citation 'chapter1' on page 18 undefined on input line 19.
+LaTeX Warning: Citation 'chapter1' on page 20 undefined on input line 19.
 
 
-LaTeX Warning: Citation 'chapter2' on page 18 undefined on input line 19.
+LaTeX Warning: Citation 'chapter2' on page 20 undefined on input line 19.
 
 
-LaTeX Warning: Citation 'chapter3' on page 18 undefined on input line 19.
+LaTeX Warning: Citation 'chapter3' on page 20 undefined on input line 19.
 
 
-LaTeX Warning: Citation 'book1' on page 18 undefined on input line 22.
+LaTeX Warning: Citation 'book1' on page 20 undefined on input line 22.
 
 
-LaTeX Warning: Citation 'book2' on page 18 undefined on input line 22.
+LaTeX Warning: Citation 'book2' on page 20 undefined on input line 22.
 
 
-LaTeX Warning: Citation 'book3' on page 18 undefined on input line 22.
+LaTeX Warning: Citation 'book3' on page 20 undefined on input line 22.
 
-) [18
+) [20
 
 ]
 \openout2 = `texfiles/app1.aux'.
@@ -1786,7 +1855,7 @@ Appendix A.
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
 (hyperref)                be the same. Added a new anchor on input line 1.
 
-) [19
+) [21
 
 
 ]
@@ -1799,7 +1868,7 @@ LaTeX Warning: Empty bibliography on input line 274.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `Dissertation_Zach.out' has not changed.
-(rerunfilecheck)             Checksum: 22BFA83D8CF231AE4DCB572ED412DBB1;5438.
+(rerunfilecheck)             Checksum: 3DE29ADAD250303F589D77C56819BC0D;5287.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                Dissertation_Zach
@@ -1810,11 +1879,11 @@ Package logreq Info: Writing requests to 'Dissertation_Zach.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38005 strings out of 476404
- 731080 string characters out of 2789524
+ 38025 strings out of 476404
+ 731463 string characters out of 2789524
  1860324 words of memory out of 3000000
  57429 multiletter control sequences out of 15000+600000
- 564541 words of font info for 220 fonts, out of 8000000 for 9000
+ 565248 words of font info for 231 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,9n,83p,1922b,1147s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/zacht/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:
@@ -1826,9 +1895,9 @@ amsfonts/cm/cmsy10.pfb><C:/Users/zacht/AppData/Local/Programs/MiKTeX/fonts/type
 /urw/times/utmb8a.pfb><C:/Users/zacht/AppData/Local/Programs/MiKTeX/fonts/type1
 /urw/times/utmr8a.pfb><C:/Users/zacht/AppData/Local/Programs/MiKTeX/fonts/type1
 /urw/times/utmri8a.pfb>
-Output written on Dissertation_Zach.pdf (31 pages, 1603165 bytes).
+Output written on Dissertation_Zach.pdf (33 pages, 1608963 bytes).
 PDF statistics:
- 405 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 500000)
- 54562 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 408 PDF objects out of 1000 (max. 8388607)
+ 82 named destinations out of 1000 (max. 500000)
+ 54554 words of extra memory for PDF output out of 61914 (max. 10000000)
 

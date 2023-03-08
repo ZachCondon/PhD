@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 import tensorflow.keras
 from tensorflow import keras
 from tensorflow.keras import layers, callbacks
@@ -8,7 +9,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.compose import make_column_transformer, make_column_selector
 from sklearn.model_selection import train_test_split
 
-def loadData():
+plt.rcParams.update({'font.size': 12})
+
+def loadData_IAEA():
     # This function pulls in the unfolding data, which is from the IAEA tecdoc.
     #  It contains 251 detector responses that correspond to various spectra,
     #  which are noted in the unfolding data key: 'Spectrum Name'. The neural
@@ -30,6 +33,11 @@ def loadData():
         Y[i,:] = unfolding_data['Spectrum'][i]
     return pd.DataFrame(X),pd.DataFrame(Y)
 
+def loadData_FRUIT():
+    X = np.load('C:\\Users\\zacht\\OneDrive\\PhD\\Data\\05-FRUIT_Spectra\\fruitDetResponse.npy',allow_pickle=(True))
+    Y = np.load('C:\\Users\\zacht\\OneDrive\\PhD\\Data\\05-FRUIT_Spectra\\fruitSpectra.npy',allow_pickle=(True))
+    return pd.DataFrame(X),pd.DataFrame(Y)
+
 ###-------------------------------------------------------------------------###
 #                              LOAD DATA                                      #
 ###-------------------------------------------------------------------------###
@@ -38,8 +46,8 @@ def loadData():
 #  set. Following the split, the X data (detector responses) is pre-processed #
 #  using make_column_transformer to transform.                                #
 ###-------------------------------------------------------------------------###
-[X,Y] = loadData()
-
+# [X,Y] = loadData_IAEA()
+[X,Y] = loadData_FRUIT()
 X_train, X_valid, Y_train, Y_valid = train_test_split(X,Y,test_size=0.3,random_state=42)
 
 # preprocessor = make_column_transformer(
@@ -66,16 +74,19 @@ X_valid = sc.transform(X_valid)
 # model defines the neural network.                                           #
 ###-------------------------------------------------------------------------###
 early_stopping = callbacks.EarlyStopping(
-    min_delta=0.000001,
+    min_delta=0.00000001,
     patience=20,
     restore_best_weights=True
     )
 
 model = keras.Sequential([
-    layers.Dense(units=512, activation='relu',input_shape=[15]),
+    layers.Dense(units=512, activation='relu',input_shape=[10]),
+    layers.Dropout(rate=0.3),
     layers.Dense(units=256, activation='relu'),
+    layers.Dropout(rate=0.3),
     layers.Dense(units=128, activation='relu'),
-    layers.Dense(units=60)
+    layers.Dropout(rate=0.3),
+    layers.Dense(units=75)
     ])
 
 model.compile(optimizer='adam', loss='mse')
@@ -95,8 +106,8 @@ model.compile(optimizer='adam', loss='mse')
 history = model.fit(
     X_train,Y_train,
     validation_data=(X_valid, Y_valid),
-    epochs=500,
-    batch_size=50,
+    epochs=10000,
+    batch_size=1000,
     verbose=1,
     callbacks = [early_stopping]
     )
@@ -104,5 +115,21 @@ history = model.fit(
 history_df = pd.DataFrame(history.history)
 # history_df.loc[:,['loss']].plot()
 history_df.loc[5:,['loss', 'val_loss']].plot()
-# # fig.title('title')
+# fig.title('title')
 tensorflow.keras.backend.clear_session()
+
+AWE_detres = np.array([10.89,15.28,22.76,25.63,27.68,29.59,28.3,26.94,25.11,23.56]).reshape(-1,1)
+AWE_detres = AWE_detres/np.linalg.norm(AWE_detres)
+pred_spec = model.predict(AWE_detres.T)
+Ebins = np.array([1e-9,1.58e-9,2.51e-9,3.98e-9,6.31e-9,1e-8,1.58e-8,2.51e-8,3.98e-8,
+         6.31e-8,1e-7,1.58e-7,2.51e-7,3.98e-7,6.31e-7,1e-6,1.58e-6,2.51e-6,
+         3.98e-6,6.31e-6,1e-5,1.58e-5,2.51e-5,3.98e-5,6.31e-5,1e-4,1.58e-4,
+         2.51e-4,3.98e-4,6.31e-4,1e-3,1.58e-3,2.51e-3,3.98e-3,6.31e-3,1e-2,
+         1.58e-2,2.51e-2,3.98e-2,6.31e-2,1e-1,1.26e-1,1.58e-1,2e-1,2.51e-1,
+         3.16e-1,3.98e-1,5.01e-1,6.31e-1,7.94e-1,1e0,1.12e0,1.26e0,1.41e0,
+         1.58e0,1.78e0,2e0,2.24e0,2.51e0,2.82e0,3.16e0,3.55e0,3.98e0,4.47e0,
+         5.01e0,5.62e0,6.31e0,7.08e0,7.94e0,8.91e0,1e1,1.12e1,1.26e1,1.41e1,
+         1.58e1])
+plt.semilogx(Ebins,pred_spec.T)
+plt.xlabel('Energy (keV)')
+plt.ylabel('')
